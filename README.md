@@ -2,7 +2,7 @@
 
 Personal portfolio for Yeswanth Varma Kanumuri: principal mobile engineer, independent builder, One Energy Together co-founder, and endurance athlete.
 
-**Live site:** https://yeswanth-in-motion.kanumuri9593.chatgpt.site/
+**Live site:** https://yeswanth.oneenergytogether.com/
 
 ## Run locally
 
