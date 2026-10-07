@@ -12,21 +12,26 @@ No installation or build step is required.
 python3 -m http.server 4173 --directory dist
 ```
 
-Open http://localhost:4173 in a browser.
+Open http://localhost:4173 for the current site, or http://localhost:4173/v1/ for the original.
 
-## Project
+## Versions
 
-- `dist/index.html`: portfolio content, projects, career, writing, and contact links.
-- `dist/journey.js`, `places.js`, `weather.js`: five activity scenes, original NYC/upstate-inspired scenery, and seasonal atmosphere.
-- `dist/identity.js`: portrait depth and lighting interaction.
-- `dist/guide.js`: miniature chapter companion with hide/restore controls.
-- `dist/baton.js`: interactive Baton demonstration, explicitly simulated.
-- `dist/site.js`, `motion.js`, `journal.js`: film dialog, section reveals, and photo journal.
+- `dist/index.html` (live at `/`): v2, a single-page scroll film. Your name races an Ironman as you scroll, Yeshu walks visitors through each section, and every professional and social link sits in the header and the Connect section. Uses GSAP 3.13 + ScrollTrigger from jsDelivr; everything else is hand-written Canvas, WebGL and CSS. Images live in `dist/img`.
+- `dist/v1/` (live at `/v1/`): the original seasons portfolio, kept intact.
+
+## v1 project files
+
+- `dist/v1/index.html`: portfolio content, projects, career, writing, and contact links.
+- `dist/v1/journey.js`, `places.js`, `weather.js`: five activity scenes, original NYC/upstate-inspired scenery, and seasonal atmosphere.
+- `dist/v1/identity.js`: portrait depth and lighting interaction.
+- `dist/v1/guide.js`: miniature chapter companion with hide/restore controls.
+- `dist/v1/baton.js`: interactive Baton demonstration, explicitly simulated.
+- `dist/v1/site.js`, `motion.js`, `journal.js`: film dialog, section reveals, and photo journal.
 - Stylesheets alongside each feature; `polish.css` is the final responsive typography layer.
-- `dist/assets`: photography, product screens, character sequences, and portrait.
+- `dist/v1/assets`: photography, product screens, character sequences, and portrait.
 - `CHARACTER-PROMPTS.txt`: image-generation and editing provenance.
 
-## Interaction and accessibility
+## v1 interaction and accessibility
 
 Activity buttons and scrolling change the scene and navigation. The shared pause control freezes the character and atmosphere; reduced-motion preferences are honored. The hero stops drawing offscreen and while the document is hidden. Weather and scenery use native Canvas with no animation framework or video dependency. Active character WebP sheets total approximately 1.7 MB. Each activity has a slower cadence (run 5.5, hike 3.5, bike 5, swim 3.5, snowboard 3.7 frames per second); atmosphere time runs at 65% speed.
 
