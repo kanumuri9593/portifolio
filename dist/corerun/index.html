@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CoreRun</title>
+<meta http-equiv="refresh" content="2;url=https://apps.apple.com/us/app/core-run/id6759610412">
+<style>
+html,body{height:100%;margin:0;background:#0b0c0e;color:#f3f0e7;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+main{min-height:100%;display:grid;place-items:center;text-align:center;padding:16px;box-sizing:border-box}
+a{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:999px;background:#ff6a3c;color:#0b0c0e;font-weight:700;text-decoration:none}
+p{margin:0;color:#9b9c98;font-size:14px}
+</style>
+</head>
+<body>
+<main><div><p>Opening the App Store…</p><a id="go" href="https://apps.apple.com/us/app/core-run/id6759610412">Get CoreRun</a></div></main>
+<script>
+// Links from emails and other channels land here first so the visit is counted,
+// then hand off to the App Store. Change APP_STORE once to retarget every link.
+var APP_STORE = document.getElementById('go').href;
+var src = new URLSearchParams(location.search).get('src');
+if (src) APP_STORE += (APP_STORE.indexOf('?') < 0 ? '?' : '&') + 'ct=' + encodeURIComponent(src);
+document.getElementById('go').href = APP_STORE;
+var sent = false;
+function go(){ if (!sent) { sent = true; location.replace(APP_STORE); } }
+window.addEventListener('load', function(){ setTimeout(go, 250); });
+setTimeout(go, 1500);
+</script>
+</body>
+</html>
