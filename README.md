@@ -16,7 +16,7 @@ Open http://localhost:4173 for the current site, or http://localhost:4173/v1/ fo
 
 ## Versions
 
-- `dist/index.html` (live at `/`): v2, a single-page scroll film. Your name races an Ironman as you scroll, Yeshu walks visitors through each section, and every professional and social link sits in the header and the Connect section. Uses GSAP 3.13 + ScrollTrigger from jsDelivr; everything else is hand-written Canvas, WebGL and CSS. Images live in `dist/img`.
+- `dist/index.html` (live at `/`): v2, a single-page scroll film. The name stays clean and still, Yeshu walks visitors through each section, and every professional and social link sits in the header and the Connect section. Uses GSAP 3.13 + ScrollTrigger from jsDelivr; everything else is hand-written Canvas, WebGL and CSS. Images live in `dist/img`.
 - `dist/v1/` (live at `/v1/`): the original seasons portfolio, kept intact.
 
 ## v1 project files
