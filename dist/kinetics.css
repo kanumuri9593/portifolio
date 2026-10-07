@@ -1,0 +1,11 @@
+/* Kinetic details. Every rule here is motion-only and switched off for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .mi-distance { font-variant-numeric: tabular-nums; }
+  .mi-distance.is-rolling small { animation: mi-unit .6s cubic-bezier(.16, 1, .3, 1) .5s backwards; }
+  .mi-word.is-rolling { animation: mi-word .9s cubic-bezier(.16, 1, .3, 1) backwards; }
+  .mi-word.is-rolling small { animation: mi-unit .6s cubic-bezier(.16, 1, .3, 1) .45s backwards; }
+  @keyframes mi-unit { from { opacity: 0; transform: translateY(.6em); } }
+  @keyframes mi-word { from { clip-path: inset(0 100% 0 0); transform: translateX(-.15em); } to { clip-path: inset(0 0 0 0); } }
+
+  .journal-print img { transform: skewX(var(--lean, 0deg)); transform-origin: 50% 100%; }
+}
