@@ -1,0 +1,15 @@
+/* Chapter companion: scoped independently from the hero and portrait redesign. */
+.little-guide{--guide-size:clamp(172px,16vw,228px);--guide-accent:#c9633d;position:fixed;width:var(--guide-size);height:calc(var(--guide-size) + 43px);right:max(20px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));opacity:0;transform:translateY(16px) scale(.96);transition:opacity .35s ease,transform .5s cubic-bezier(.2,.75,.2,1);pointer-events:none;filter:drop-shadow(0 7px 12px #0002)}
+.little-guide.is-active{opacity:1;transform:translateY(0) scale(1);pointer-events:none}
+.little-guide canvas{display:block;width:var(--guide-size);height:var(--guide-size);pointer-events:none}
+.little-guide a{position:absolute;right:0;bottom:0;display:flex;align-items:center;justify-content:center;min-height:43px;width:100%;max-width:none;box-sizing:border-box;padding:10px 14px;border:1px solid color-mix(in srgb,var(--guide-accent) 55%,#d9d8c9);border-radius:24px;background:#f5f2eaf7;color:#273a2d;font:600 11px/1.3 var(--body,Arial,sans-serif);white-space:normal;text-align:center;overflow:visible;text-overflow:clip;box-shadow:0 3px 14px #17241d12;pointer-events:auto;transition:background .2s,border-color .35s,transform .2s}
+.little-guide a:hover{background:#f7dcc5;transform:translateY(-2px)}
+.little-guide>button{position:absolute;top:12px;right:-4px;display:grid;place-items:center;width:40px;height:40px;border:1px solid #c1c9bc;border-radius:50%;background:#f5f2eae8;color:#41583e;font-size:20px;pointer-events:auto;opacity:.8;transition:opacity .2s,background .2s}
+.little-guide>button:hover{opacity:1;background:#fffaf0}
+.little-guide:focus-within{outline:none}
+.little-guide a:focus-visible,.little-guide>button:focus-visible,.guide-restore:focus-visible{outline:2px solid var(--guide-accent,#c9633d);outline-offset:4px}
+.guide-restore{bottom:max(16px,env(safe-area-inset-bottom));right:max(16px,env(safe-area-inset-right));min-height:44px;font-size:11px;padding:10px 16px}
+@media(max-width:1000px){.little-guide{--guide-size:180px;right:16px;bottom:16px}}
+@media(max-width:700px){.little-guide{--guide-size:clamp(120px,34vw,148px);right:max(10px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom))}.little-guide a{font-size:10px;padding:9px 10px;min-height:44px}.little-guide>button{width:40px;height:40px;right:-4px;top:-3px;font-size:19px}}
+@media(max-height:550px){.little-guide{--guide-size:112px;bottom:8px}.little-guide a{font-size:9px;min-height:38px}.little-guide>button{top:-5px}}
+@media(prefers-reduced-motion:reduce){.little-guide,.little-guide a,.little-guide>button{transition:none}.little-guide{transform:none;height:calc(var(--guide-size) + 43px)}.little-guide canvas{display:block}}
