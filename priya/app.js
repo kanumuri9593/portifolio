@@ -4,7 +4,7 @@
   const $$ = (q, root = document) => [...root.querySelectorAll(q)];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const worlds = {
-    kandavalli: { label:'KANDAVALLI / AFTER THE RAIN', role:'PADMAPRIYA JAMPANA / THE MAKER', headline:'A little world<br>of <em>wonder.</em>', intro:'Indian roots. Paint on my hands. A little everyday beauty, made by hand.', handnote:'There’s always room for a little colour.', cta:'Explore my art', href:'#art', note:'A little piece of home.', image:'assets/courtyard.webp', alt:'An imagined Indian courtyard, inspired by Priya’s roots', character:'assets/priya-artist.webp', characterAlt:'Illustrated Priya in her emerald sari with jhumkas, holding a paintbrush and palette', hello:'A little colour?', message:'A little rain. A little nostalgia. A lot of colour.' },
+    kandavalli: { label:'KANDAVALLI, NEAR TANUKU / AFTER THE RAIN', role:'PADMAPRIYA JAMPANA / THE MAKER', headline:'A little world<br>of <em>wonder.</em>', intro:'Godavari roots. Paint on my hands. A little everyday beauty, made by hand.', handnote:'There’s always room for a little colour.', cta:'Explore my art', href:'#art', note:'Godavari green, after the rain.', image:'assets/courtyard.webp', alt:'An imagined Indian courtyard, inspired by Priya’s roots', character:'assets/priya-artist.webp', characterAlt:'Illustrated Priya in her emerald sari with jhumkas, holding a paintbrush and palette', hello:'A little colour?', message:'A little rain. A little nostalgia. A lot of colour.' },
     nyc: { label:'NEW YORK / FOLLOW THE LIGHT', role:'PADMAPRIYA JAMPANA / THE PHOTOGRAPHER', headline:'Chasing light.<br>Keeping <em>stories.</em>', intro:'Portraits, passing light, and people being themselves. My city, through my lens.', handnote:'The little moments are the big ones.', cta:'See my photographs', href:'#photography', note:'The city is my muse.', image:'assets/portrait-dsc06627.webp', alt:'Golden light on a New York street, photographed by Priya', character:'assets/priya-nyc.webp', characterAlt:'Illustrated Priya in a terracotta city coat, jeans and sneakers, holding her camera', hello:'Say cheese', message:'The best moments usually happen in between.' },
     oneonta: { label:'ONEONTA / TAKE THE SCENIC ROUTE', role:'PADMAPRIYA JAMPANA / THE EXPLORER', headline:'The long way.<br>The best <em>views.</em>', intro:'One more trail. One more photograph. Finding wonder a little further from the everyday.', handnote:'My favourite plans come with a detour.', cta:'Wander through my lens', href:'#photography', filter:'places', note:'Taking the scenic route.', image:'assets/autumn.webp', alt:'An illustrated upstate autumn, with rolling hills and maple trees', character:'assets/priya-hike.webp', characterAlt:'Illustrated Priya in an ochre hiking jacket, walking trousers and boots, carrying a backpack and walking stick', hello:'Shall we wander?', message:'One more trail. One more photograph. One more reason to stay.' },
     winter: { label:'AT HOME / A LITTLE SLOWER', role:'PADMAPRIYA JAMPANA / THE HOST', headline:'Good coffee.<br>Better <em>company.</em>', intro:'Something warm from the oven. Another chair at the table. Come for the coffee; stay for the company.', handnote:'Made with a little extra love.', cta:'Pull up a chair', href:'#table', note:'Stay for one more cup.', image:'assets/winter-studio.webp', alt:'An imagined warm creative studio, with a snowy view beyond the window', character:'assets/priya-winter.webp', characterAlt:'Illustrated Priya in a cream knit sweater and cinnamon apron, holding a warm cup of coffee', hello:'Coffee?', message:'Something warm from the oven. A place at the table.' }
@@ -44,6 +44,8 @@
     // Decode both rendered layers before making any part of the next chapter visible.
     await Promise.all([backdropLayers[next].decode(),characterLayers[next].decode()]).catch(()=>{});
     if(token!==transitionId)return;
+    // Close the lens before the swap so the change is never seen, then open on the new world.
+    if(window.priyaShutter){await window.priyaShutter();if(token!==transitionId){window.priyaShutterOpen?.();return;}}
     currentWorld=name;
     document.documentElement.dataset.world=name;
     window.setAtmosphere?.(name);
@@ -52,6 +54,7 @@
       layers[old].classList.remove('is-active');layers[old].setAttribute('aria-hidden','true');
       layers[next].classList.add('is-active');layers[next].removeAttribute('aria-hidden');
     }
+    window.priyaShutterOpen?.();
     $$('.world-switcher [data-world]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.world===name)));
     $('#world-location').textContent=w.label;$('#world-note').textContent=w.note;
     $('#journey-counter').textContent=`${String(worldNames.indexOf(name)+1).padStart(2,'0')} / 04`;

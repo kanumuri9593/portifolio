@@ -1,0 +1,28 @@
+/* Priya v2 motion layer (see wow.js) */
+.lens-iris{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
+.wow .scene-window.is-shutting>img.scene-image{transition:opacity .08s linear,transform 1.65s var(--ease)}
+.wow .character-layer{transition:translate .34s cubic-bezier(.5,0,.75,0),scale .34s cubic-bezier(.5,0,.75,0),opacity .3s,filter .34s}
+.wow .character-layer.swap-out{translate:0 5%;scale:.94;opacity:0;filter:blur(3px)}
+.wow .character-layer.swap-in{transition:translate .75s cubic-bezier(.2,1.35,.35,1),scale .75s cubic-bezier(.2,1.35,.35,1),opacity .25s,filter .4s}
+.camera-flash.flash{animation:flash .65s ease-out}
+
+.tanjore-gold{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.art-world .art-caption{z-index:3}
+
+.darkroom .photo-card .photo-frame{background:#2a0d0b}
+.darkroom .photo-card .photo-frame img{filter:invert(1) hue-rotate(180deg) sepia(.35) contrast(.8) brightness(1.15);transition:filter 2.2s cubic-bezier(.3,.1,.2,1)}
+.darkroom .photo-card .photo-frame::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(200,30,20,.38),rgba(80,0,0,.55));mix-blend-mode:multiply;transition:opacity 2s ease;pointer-events:none}
+.darkroom .photo-card.is-developed .photo-frame img{filter:none}
+.darkroom .photo-card.is-developed .photo-frame::after{opacity:0}
+
+.pour-block{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:6%;align-items:center;margin:10px 0 70px}
+.pour-cup{max-width:420px;width:100%;justify-self:center}
+.pour-cup canvas{display:block;width:100%;height:auto;max-width:100%}
+.pour-copy h3{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.03em;margin:.35em 0 .3em}
+.pour-copy h3 em{color:var(--accent)}
+.pour-copy>p:not(.eyebrow){max-width:40ch}
+.pour-row{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:22px}
+.pour-row .pour-name{position:static;transform:none;background:none;box-shadow:none;padding:0;font-size:1.25rem}
+@media (max-width:760px){.pour-block{grid-template-columns:1fr;gap:24px}.pour-cup{max-width:300px}}
+@media (max-width:600px){.wow .art-caption{padding-left:calc(6% + 20px);padding-right:calc(6% + 20px)}}
+@media (prefers-reduced-motion:reduce){.wow .character-layer{transition:none}}
