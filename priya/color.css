@@ -31,3 +31,6 @@ html[data-world=winter] .colour-halo{opacity:.28}
 .tilt-live .floating-print{translate:calc(var(--tilt-x,0)*-22px) calc(var(--tilt-y,0)*-16px)}
 .tilt-live .scene-note{translate:calc(var(--tilt-x,0)*-12px) 0}
 .tilt-live .scene-window::after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(circle at calc(50% + var(--tilt-x,0)*45%) calc(30% + var(--tilt-y,0)*35%),#ffffffa0,transparent 55%)}
+/* Season stops (snap.js) */
+.season-stop{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:var(--header-height,72px)}
+html.snap-seasons{scroll-snap-type:y mandatory;scroll-padding-top:0}
