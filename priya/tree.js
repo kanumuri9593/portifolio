@@ -54,7 +54,7 @@
     scene.add(shadow);
 
     let W=0,H=0,S=30,ground=0;
-    function size(){W=innerWidth;H=innerWidth<=600?170:240;S=innerWidth<=600?30:44;ground=24;
+    function size(){W=innerWidth;H=innerWidth<=600?170:240;S=innerWidth<=600?26:44;ground=24;
       renderer.setSize(W,H,false);cv.style.height=H+'px';cam.right=W;cam.top=H;cam.updateProjectionMatrix();}
     size();addEventListener('resize',size,{passive:true});
 
@@ -62,7 +62,7 @@
     const margin=()=>Math.min(90,W*.12);
     const target=()=>{const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);return margin()+(W-2*margin())*Math.min(1,scrollY/max);};
     let x=target(),face_=0,hop=null,lastY=scrollY,vel=0,spinQueued=false,mx=0,my=0,blink=0,nextBlink=2;
-    addEventListener('scroll',()=>{vel+=scrollY-lastY;lastY=scrollY;},{passive:true});
+    let lastScroll=0;addEventListener('scroll',()=>{vel+=scrollY-lastY;lastY=scrollY;lastScroll=performance.now();},{passive:true});
     addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
     // On phones, tilting moves Pip's gaze so he keeps looking at you.
     addEventListener('priya-tilt',e=>{mx=x-e.detail.x*320;my=innerHeight-ground-1.2*S-e.detail.y*320;});
@@ -76,7 +76,8 @@
       if(document.hidden)return;
       const dt=Math.min(.05,clock.getDelta());
       const still=reduced||root.classList.contains('motion-paused');
-      const show=past();cv.classList.toggle('is-visible',show);
+      // On phones the content runs edge to edge, so Pip only hops while you scroll and ducks away when you stop to read.
+      const show=past()&&(W>600||performance.now()-lastScroll<1300||!!hop);cv.classList.toggle('is-visible',show);
       if(!show&&!hop)return;
       t+=still?0:dt;
       const goal=target(),gap=goal-x;

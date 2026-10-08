@@ -74,7 +74,8 @@
   const open=window.priyaShutterOpen;
   if(open)window.priyaShutterOpen=(...a)=>{
     const r=document.querySelector('.scene-window')?.getBoundingClientRect();
-    if(r&&r.bottom>0&&r.top<H)burst(r.left+r.width/2,r.top+r.height*.35,{powder:30,petals:34,power:1.25});
+    // Petals only, drifting in from the screen edges so they rain around Priya, never over her face.
+    if(r&&r.bottom>0&&r.top<H){const y=r.top+r.height*.3;burst(-8,y,{powder:0,petals:14,power:.55});burst(W+8,y,{powder:0,petals:14,power:.55});}
     return open(...a);
   };
 
@@ -137,4 +138,20 @@
       gsap.utils.toArray('.recipe-card').forEach((el,i)=>gsap.from(el,{y:60+i*30,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'top 45%',scrub:true}}));
     });
   }
+
+  /* 8. Phones: size the scene to the room left under the button, so Priya never sits under the copy. */
+  const phone=matchMedia('(max-width: 600px)'),cta=document.getElementById('world-cta'),journey=document.querySelector('.hero-journey');
+  function fit(){
+    if(!stage||!cta)return;
+    stage.style.height='';journey?.classList.remove('hero-tight','hero-small');
+    if(!phone.matches||root.classList.contains('journey-compact'))return;
+    const room=()=>stage.getBoundingClientRect().bottom-cta.getBoundingClientRect().bottom-18;
+    let h=Math.min(340,room()/1.1);// her head rises about 10% above the scene
+    if(h<270){journey?.classList.add('hero-tight');h=Math.min(340,room()/1.1);}
+    stage.style.height=Math.max(200,Math.round(h))+'px';
+    journey?.classList.toggle('hero-small',h<260);
+  }
+  fit();addEventListener('resize',fit,{passive:true});addEventListener('load',fit);
+  document.fonts?.ready.then(fit);
+  new MutationObserver(()=>setTimeout(fit,60)).observe(root,{attributes:true,attributeFilter:['data-world']});
 })();

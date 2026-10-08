@@ -111,6 +111,15 @@ def build(source, output):
                     pending.append(dependency)
         else:
             staged[relative] = candidate.read_bytes()
+    # Version local styles and scripts by content so phones never keep a stale copy after a deploy.
+    import hashlib
+    def bust(match):
+        ref = match.group(2)
+        if ref in staged:
+            return f'{match.group(1)}{ref}?v={hashlib.sha1(staged[ref]).hexdigest()[:10]}"'
+        return match.group(0)
+    for page in [r for r in staged if r.endswith('.html')]:
+        staged[page] = re.sub(r'((?:src|href)=")([^"?#:]+\.(?:css|js))"', bust, staged[page].decode('utf-8')).encode('utf-8')
     output.mkdir(parents=True, exist_ok=True)
     for relative, payload in staged.items():
         target = output / relative
@@ -118,7 +127,7 @@ def build(source, output):
         target.write_bytes(payload)
     (output / 'api').mkdir(exist_ok=True)
     (output / 'api' / 'gallery.json').write_text('{"items":[]}\n')
-    (output / '_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n')
+    (output / '_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/\n  Cache-Control: no-cache\n/index.html\n  Cache-Control: no-cache\n')
     (output / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
     (output / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{ORIGIN}/</loc></url></urlset>\n')
     print(f'Built {len(staged) + 4} public files, {len(merged)} gallery items in {output}')
