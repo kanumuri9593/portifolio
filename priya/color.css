@@ -1,0 +1,21 @@
+/* Priya colour layer (see color.js, tree.js) */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:clip}
+.holi-canvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60}
+.colour-halo{position:absolute;width:84%;height:78%;right:4%;top:10%;border-radius:50%;background:conic-gradient(from 0deg,#e8327c,#ff7a1a,#f4b400,#3fae49,#0f9b8e,#5b3fd1,#e8327c);filter:blur(42px);opacity:.42;animation:rotate 24s linear infinite;pointer-events:none}
+html[data-world=winter] .colour-halo{opacity:.28}
+.colour .hero h1 em{background:linear-gradient(100deg,var(--accent) 10%,#e8327c 50%,#ff8a1a 90%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.ink-char{display:inline-block;will-change:transform}
+.rangoli-divider{display:flex;justify-content:center;padding:56px 0 0}
+.rangoli{overflow:visible;display:block}
+.rangoli .rg-line{fill:none;stroke:#fff3d6;stroke-width:1.2;opacity:.7}
+.rangoli .rg{stroke:#fff8e6;stroke-width:1.1;stroke-linejoin:round}
+.rangoli-art{width:min(230px,58vw);height:auto}
+.invitation{isolation:isolate}
+.rangoli-bg{position:absolute;left:50%;top:50%;width:min(860px,150vw);height:auto;translate:-50% -50%;opacity:.32;z-index:-1;pointer-events:none;animation:rotate 120s linear infinite}
+.rangoli-bg .rg-line{stroke:#263a2d}
+.has-pip .little-priya{display:none!important}
+.pip-canvas{position:fixed;left:0;bottom:0;width:100vw;pointer-events:none;z-index:25;opacity:0;transform:translateY(30px);transition:opacity .5s,transform .7s var(--ease)}
+.pip-canvas.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.colour-halo,.rangoli-bg{animation:none}}
