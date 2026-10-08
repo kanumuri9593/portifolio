@@ -67,7 +67,7 @@
     if(!paused&&!reduced.matches){void copy.offsetWidth;copy.classList.add('chapter-enter');copyTimer=setTimeout(()=>copy.classList.remove('chapter-enter'),850);}
   }
   let journeyStart=0,journeyTravel=1,journeyFrame=0,compact=false;
-  const shortViewport=matchMedia('(max-height: 620px), (max-width: 600px) and (max-height: 760px)');
+  const shortViewport=matchMedia('(max-height: 520px)');// phones in landscape only; portrait phones get the full scroll journey
   function updateJourney(){
     journeyFrame=0;
     if(compact)return;
