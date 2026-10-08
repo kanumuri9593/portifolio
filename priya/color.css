@@ -19,3 +19,5 @@ html[data-world=winter] .colour-halo{opacity:.28}
 .pip-canvas{position:fixed;left:0;bottom:0;width:100vw;pointer-events:none;z-index:25;opacity:0;transform:translateY(30px);transition:opacity .5s,transform .7s var(--ease)}
 .pip-canvas.is-visible{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.colour-halo,.rangoli-bg{animation:none}}
+@media (max-width:600px){.round-stamp{display:none}}
+@media (max-width:600px) and (max-height:780px){.hero-journey .hero-intro{display:none}.hero-journey .hero h1{font-size:clamp(40px,11vw,56px)}.hero-journey .world-stage{height:clamp(240px,calc(100svh - 410px),340px)}}
