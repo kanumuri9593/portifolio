@@ -1,0 +1,70 @@
+ASSET GENERATION PROVENANCE
+
+These are generated illustrations for the portfolio, not original paintings by Priya. Prompts below are retained verbatim except local reference paths are made portable. “Preview only” notes describe the generation stage, not the current publication status. Reference and intermediate PNG names identify generation inputs; those files are not necessarily distributed in the repository. The site uses optimized WebP assets.
+
+SOURCE PROMPT FILE: prompts.txt
+
+Built-in image_gen; preview only; nothing published.
+
+CAMERA (reference: assets/priya-reference.png), transparent_background true
+
+Use case: stylized-concept. Create ONE full-body transparent illustrated character inspired by the woman in this reference photo, for an elegant artist and photographer portfolio hero. Recognizable adult Indian woman Priya: preserve her warm face shape, expressive brown eyes, arched dark eyebrows, genuine broad gentle smile, medium warm brown skin, and distinctive abundant shoulder-length big curly black hair. Silver handcrafted jhumka earrings. Fashionable relaxed standing pose with slight contrapposto, holding a small charcoal vintage camera naturally with both hands at waist, looking warmly toward viewer. Wear a beautiful emerald-green Indian sari and matching blouse inspired by reference, with restrained handcrafted botanical and tiger motifs in ochre and muted terracotta, natural fabric drape, understated flat sandals. Style: exceptionally art-directed tactile clay and stop-motion 3D editorial sculpture, handcrafted curls and woven cloth, matte surfaces with fine imperfection, mature elegant proportions, head modestly enlarged but not chibi. Sophisticated warm cinematic studio lighting. Not generic Pixar, not glossy plastic, not photoreal, not toy baby. Full body from top of hair to shoes clearly visible, entire silhouette isolated, centered with generous breathing room. Truly transparent alpha background. No floor, no ground shadow, no scenery, no text, no logo, no border. ONE character only, not a sprite sheet.
+
+COURTYARD (no image reference), transparent_background false
+
+Create one wide landscape illustration at 3:2 aspect ratio for an elegant Indian artist's travel-journal portfolio. Original tactile gouache and layered hand-cut paper collage of a lush South Indian home courtyard: ochre verandah arches, terracotta tiled roof glimpses, mango and coconut greenery, a small lotus pond reflecting dappled afternoon sunlight, hand-painted geometric floor patterns, warm pink flowers and nuanced paper grain. Rich burnt sienna, emerald, coral, ochre and warm cream palette, confident beautiful large shapes with fine handmade details and layered depth. Warm playful premium illustrated art direction, inviting composition, no people anywhere, no text, no labels, no UI or frames. This is an imaginative courtyard, not an identifiable geographic location. Full bleed landscape image, excellent craftsmanship, not generic flat clipart.
+
+CAMERA V2 ALPHA CLEANUP (reference: priya-camera.png), transparent_background true
+
+Precise background extraction edit. Keep the SINGLE full-body woman character, camera, sari, hair and earrings exactly as shown. Remove ALL colored blurry halo and ALL glow from EVERY pixel outside the person's silhouette, replacing with completely transparent alpha zero. The prior result incorrectly has hazy green/brown background aura; remove that aura completely. Clean sharp contour along curls, shoulders, hands, sari hem, sandals, and all interior gaps. Preserve her recognizable face, natural proportions, rich handcrafted emerald sari, all existing textures, lighting ON THE CHARACTER, camera and warm smile. No new background, no drop shadow, no floor, no glow, no text. One entirely isolated character with genuinely empty transparent surroundings.
+
+COFFEE (references: priya-camera-v2.png and original portrait), transparent_background true
+
+Create one new pose of the SAME mature female character in reference image 1, using reference image 2 for her real facial likeness. Preserve her distinctive abundant shoulder-length big black curls, warm expressive smiling Indian face, silver jhumka earrings, emerald sari with handcrafted tiger and botanical motifs, natural adult proportions. Now she is an artist enjoying a quiet coffee break: standing in relaxed contrapposto, holding a beautiful small terracotta ceramic coffee cup in both hands at chest height, no camera or camera strap. Warm expressive sophisticated 3D storybook clay/stop-motion editorial illustration with tactile matte materials, subtly stylized head and handmade details; not plastic Pixar, no exaggerated thin waist. Entire single fullbody character including hair and flat sandals centered with breathing room. TRUE transparent alpha background, absolutely no colored haze, no halo, no glow outside silhouette, no floor or shadows, no text, no scenery, no border, no other people. Only the woman and her coffee cup.
+
+
+SOURCE PROMPT FILE: autumn-prompt.txt
+
+Built-in image_gen; one call; transparent_background false. Reference: courtyard.png for painterly texture/style. Preview only.
+
+Create one wide 3:2 landscape illustration, matching the supplied reference image's richly textured tactile gouache and hand-cut paper collage storybook craftsmanship. Scene: an imaginative Oneonta/upstate New York autumn landscape, rolling blue-green and ochre distant mountains, layered hills and abundant maple woodlands glowing burnt orange, rust, gold and coral, a small charming redbrick upstate main street glimpse winding through the lower valley with modest historic storefronts and cozy rooftops, soft cream autumn sky, warm slanting afternoon light, subtle paper grain and hand-painted details. Elegant illustrated travel journal art direction, painterly not photographic, restrained cinematic composition with depth and beautifully balanced large shapes. No people, no vehicles, no legible text or shop lettering, no UI or frame. This is an illustrative regional setting rather than an exact geographic depiction. Full bleed landscape.
+
+
+
+
+SCROLL-JOURNEY ITERATION — season-outfits-prompts.txt
+Built-in image_gen; one call per variant, transparent_background true. References: assets/priya-camera.png and priya-reference.png. Preview only.
+
+nyc
+Create ONE transparent full-body outfit variant of exactly the SAME Priya character in image1; image2 is her real portrait for identity. Preserve her exact recognizable adult face, warm smile, abundant shoulder-length big black curls, silver jhumka earrings, natural adult body proportions, and existing tactile sophisticated 3D clay/stop-motion editorial quality. Same front standing relaxed contrapposto framing and fullbody scale, entire head and shoes visible. NYC spring photographer outfit: chic muted terracotta lightweight trench coat worn open over a cream T-shirt, indigo straight-leg jeans, clean white sneakers. Hold her vintage camera naturally with both hands at waist, camera strap around neck. This is distinctly modern city clothing, NO sari. Rich woven tactile fabric details, warm natural light ON the character only. Genuine transparent alpha background with completely empty surroundings: no colored haze, no halo, no glow, no floor, no ground shadow, no scene, no text or border. ONE character only.
+
+winter
+Create ONE transparent full-body outfit variant of exactly the SAME Priya character in image1; image2 is her real portrait for identity. Preserve her exact recognizable adult face, warm smile, abundant shoulder-length big black curls, silver jhumka earrings, natural adult body proportions, and existing tactile sophisticated 3D clay/stop-motion editorial quality. Same front standing relaxed contrapposto framing and fullbody scale, entire head and shoes visible. Cozy home artist winter outfit: cream textured chunky-knit sweater, muted cinnamon artist apron over forest-green trousers, warm tan slippers. Hold a terracotta ceramic cup of coffee gently in BOTH hands at chest level. NO camera, no camera strap, NO sari. Rich woven tactile fabric details, warm natural light ON the character only. Genuine transparent alpha background with completely empty surroundings: no colored haze, no halo, no glow, no floor, no ground shadow, no scene, no text or border. ONE character only.
+
+
+SCROLL-JOURNEY ITERATION — season-hike-scene-prompts.txt
+Built-in imagegen used. One call per asset.
+
+PRIYA HIKE
+Use case: identity-preserve
+Asset type: transparent full-body character for a scroll-driven personal portfolio hero.
+Input images: Image 1 priya-camera.png is the character style, adult face, body proportions, abundant curls, jhumka earrings, pose and fullbody framing reference. Image 2 priya-reference.png is supporting adult facial identity reference.
+Primary request: Preserve Priya's adult face and warm smile, abundant dark curly hair, silver jhumkas, body proportions, and tactile sculpted 3D character style. Change attire to an autumn hiking outfit: golden ochre outdoor jacket worn open over a cream top, dark forest green walking trousers, brown hiking boots, small rust backpack with visible shoulder straps. Hold a simple wooden walking stick by her side with one hand, the other relaxed. Same front standing pose, slight natural head tilt and full-body framing as image 1, entire hair and both boots inside canvas. No sari. No camera needed.
+Lighting: Soft warm daylight on the character only, plausible soft fabric textures and clay-like sculpted realism matching reference.
+Background: genuinely transparent alpha, isolated character only, no ground, no shadow, no halo, no scenery, no colored glow, no text, no logos. Preserve identity and proportions closely.
+
+WINTER STUDIO
+Use case: illustration-story
+Asset type: wide original background scene for a scroll-driven portfolio hero, 3:2 landscape.
+Input images: courtyard.png and autumn.webp are style references only, not edit targets. Match their rich gouache brushwork, tactile paper texture, convincing spatial depth, warm/cool palette and architectural detail.
+Primary request: A cozy winter studio in a South Asian creative person's upstate New York home. Large arched window looking over cool blue-grey snow-covered trees and distant hills. Interior warm ochre plaster, dark walnut timber, a copper coffee-making setup and ceramic cups on a small table, leafy houseplants, a few understated brushes and paint tubes by a blank sketchbook, a cozy golden lamp and a woven rug. Warm interior versus cool winter outdoors. Thoughtfully lived-in, intimate and beautiful, not cluttered.
+Composition: Wide room view with layered foreground plants at edges, readable floor and seating in middle ground, generous open central space suitable for later character overlay, large arch and snowy landscape in background. Eye-level view with painterly depth. Objects arranged naturally.
+Style: Original hand-painted gouache editorial storybook environment with the same painterly realism and warm amber atmosphere as courtyard reference, not photorealistic and not flat cartoon.
+Constraints: No people, no text, no logos or brands. Do not include completed paintings that could be mistaken for the portfolio owner's artworks; blank paper and small painting materials only. No watermark.
+
+
+
+ARTIST WITHOUT CAMERA
+Built-in image_gen edit; one call; transparent_background true. References: assets/priya-camera.png and priya-reference.png. WebP conversion quality 88, alpha quality 100.
+
+Identity-preserving precise edit of image1. Keep exactly the same full-body Priya adult character with warm smiling face, abundant shoulder-length black curls, silver jhumka earrings, emerald Indian sari with botanical and tiger motifs, tactile refined 3D clay editorial quality, natural proportions, front standing framing and sandals. Image2 is real facial identity reference. REMOVE THE CAMERA COMPLETELY and remove EVERY camera strap completely from neck and torso. Replace camera pose with relaxed artist pose: one hand naturally holding one thin paintbrush at waist height, other hand gently holding one small warm wood artist palette with tiny dabs of ochre, coral, emerald and cream paint. Exactly two arms and two hands, anatomically coherent fingers. Restore sari/blouse fabric where straps were. No camera or photography equipment anywhere. Clothing unchanged. Full body including all hair and both sandals visible, same centered scale and modest margins. Preserve genuine alpha transparency, no halo, no floor, no ground shadow, no background or scene, no text. Only the isolated character and her small artist tools.

@@ -1,0 +1,130 @@
+{
+  "items": [
+    {
+      "id": "wedding",
+      "url": "assets/event-dsc03765.webp",
+      "title": "Just the two of us",
+      "category": "photography",
+      "group": "people",
+      "tag": "Wedding",
+      "caption": "A wedding moment, photographed by Priya Jampana.",
+      "source": "https://shinewithshutter.com/gallery-with-description-and-a-button/",
+      "position": "30% 70%"
+    },
+    {
+      "id": "bridge",
+      "url": "assets/landscape-00.webp",
+      "title": "When the city turns blue",
+      "category": "photography",
+      "group": "places",
+      "tag": "New York",
+      "caption": "New York at blue hour. Photograph by Priya Jampana.",
+      "source": "https://shinewithshutter.com/",
+      "position": "center"
+    },
+    {
+      "id": "bridal",
+      "url": "assets/bridal-editorial.webp",
+      "title": "A story in scarlet",
+      "category": "photography",
+      "group": "people",
+      "tag": "Bridal editorial",
+      "caption": "Photography: Shine with Shutter. Hair & makeup: @muamisba. Outfit, jewellery & studio: @sunandakumarstudio. Model: @hetvikapadiaa.",
+      "source": "https://www.instagram.com/muamisba/p/DPmGMSnjiVM/",
+      "position": "center"
+    },
+    {
+      "id": "puffin",
+      "url": "assets/puffin-elliston-1.webp",
+      "title": "A little wild wonder",
+      "category": "photography",
+      "group": "details",
+      "tag": "Newfoundland",
+      "caption": "Puffin photographed in Elliston, Newfoundland and Labrador. From Priya and Yeswanth’s shared adventure.",
+      "source": "https://www.instagram.com/shinewithshutter/p/DaotUyrDYLZ/",
+      "position": "center"
+    },
+    {
+      "id": "citylight",
+      "url": "assets/portrait-dsc06627.webp",
+      "title": "One golden crossing",
+      "category": "photography",
+      "group": "places",
+      "tag": "New York",
+      "caption": "Light on a New York street. Photograph by Priya Jampana.",
+      "source": "https://shinewithshutter.com/",
+      "position": "center"
+    },
+    {
+      "id": "portrait",
+      "url": "assets/event-dsc05856-1.webp",
+      "title": "A chapter begins",
+      "category": "photography",
+      "group": "people",
+      "tag": "Portrait",
+      "caption": "Graduation portrait by Priya Jampana.",
+      "source": "https://shinewithshutter.com/gallery-with-description-and-a-button/",
+      "position": "center"
+    },
+    {
+      "id": "moon",
+      "url": "assets/landscape-dsc09481-2-1.webp",
+      "title": "The city, after dark",
+      "category": "photography",
+      "group": "places",
+      "tag": "New York",
+      "caption": "The moon above the Empire State Building. Photograph by Priya Jampana.",
+      "source": "https://shinewithshutter.com/",
+      "position": "center"
+    },
+    {
+      "id": "coast",
+      "url": "assets/landscape-dsc05705-3.webp",
+      "title": "Where the light lingers",
+      "category": "photography",
+      "group": "places",
+      "tag": "Coast",
+      "caption": "Coastal landscape by Priya Jampana.",
+      "source": "https://shinewithshutter.com/",
+      "position": "center"
+    },
+    {
+      "id": "puffins",
+      "url": "assets/puffin-elliston-2.webp",
+      "title": "Good company",
+      "category": "photography",
+      "group": "details",
+      "tag": "Newfoundland",
+      "caption": "Puffins in Elliston, Newfoundland and Labrador. From Priya and Yeswanth’s shared adventure.",
+      "source": "https://www.instagram.com/shinewithshutter/p/DaotUyrDYLZ/",
+      "position": "center"
+    },
+    {
+      "id": "banana-nut-bread-vegan",
+      "url": "assets/banana-nut-bread-vegan-dsc00936-edited.webp",
+      "title": "Banana nut bread",
+      "category": "table",
+      "tag": "FRESH FROM THE OVEN",
+      "caption": "Recipe and photography from Priya’s One Energy Together journal.",
+      "source": "https://studio.oneenergytogether.com/blog/banana-nut-bread-vegan"
+    },
+    {
+      "id": "chocolate-almond-truffles",
+      "url": "assets/chocolate-almond-truffles-img_5934.webp",
+      "title": "Chocolate almond truffles",
+      "category": "table",
+      "tag": "A LITTLE SOMETHING SWEET",
+      "caption": "Recipe and photography from Priya’s One Energy Together journal.",
+      "source": "https://studio.oneenergytogether.com/blog/chocolate-almond-truffles"
+    },
+    {
+      "id": "protein-brownie-bites",
+      "url": "assets/protein-brownie-bites-dsc04546-2.webp",
+      "title": "Brownie bites",
+      "category": "table",
+      "tag": "ONE MORE BITE",
+      "caption": "Recipe and photography from Priya’s One Energy Together journal.",
+      "source": "https://studio.oneenergytogether.com/blog/protein-brownie-bites"
+    }
+  ]
+}
