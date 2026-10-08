@@ -11,7 +11,7 @@
     if(e.gamma==null)return;
     if(!base)base={b:e.beta,g:e.gamma};
     tx=clamp((e.gamma-base.g)/22);ty=clamp((e.beta-base.b)/22);
-    if(!live){live=true;root.classList.add('tilt-live');hint?.remove();}
+    if(!live){live=true;root.classList.add('tilt-live');}
     if(!raf)raf=requestAnimationFrame(tick);
   }
   function tick(){
@@ -26,12 +26,10 @@
   // Re-centre when the phone settles into a new resting angle (e.g. sitting down).
   setInterval(()=>{if(base&&Math.abs(tx)>.95)base.g+=Math.sign(tx)*4;if(base&&Math.abs(ty)>.95)base.b+=Math.sign(ty)*4;},400);
   const start=()=>addEventListener('deviceorientation',onTilt,{passive:true});
-  let hint=null;
   if(typeof DeviceOrientationEvent.requestPermission==='function'){
-    // iOS asks once, and only after a tap, so offer a small chip on the scene.
-    hint=Object.assign(document.createElement('button'),{className:'tilt-hint',type:'button',innerHTML:'Tilt to look around <span aria-hidden="true">✶</span>'});
-    stage.append(hint);
-    hint.addEventListener('click',e=>{e.stopPropagation();
-      DeviceOrientationEvent.requestPermission().then(s=>{if(s==='granted')start();hint?.remove();}).catch(()=>hint?.remove());});
+    // iOS only allows motion access after a tap. Ask on the first tap anywhere, with no label over the scene.
+    const ask=()=>{removeEventListener('click',ask,true);
+      DeviceOrientationEvent.requestPermission().then(s=>{if(s==='granted')start();}).catch(()=>{});};
+    addEventListener('click',ask,true);
   }else start();
 })();
