@@ -64,6 +64,8 @@
     let x=target(),face_=0,hop=null,lastY=scrollY,vel=0,spinQueued=false,mx=0,my=0,blink=0,nextBlink=2;
     addEventListener('scroll',()=>{vel+=scrollY-lastY;lastY=scrollY;},{passive:true});
     addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+    // On phones, tilting moves Pip's gaze so he keeps looking at you.
+    addEventListener('priya-tilt',e=>{mx=x-e.detail.x*320;my=innerHeight-ground-1.2*S-e.detail.y*320;});
     new MutationObserver(()=>{const w=root.dataset.world;snow.forEach(s=>s.visible=w==='winter');spinQueued=true;})
       .observe(root,{attributes:true,attributeFilter:['data-world']});
     snow.forEach(s=>s.visible=root.dataset.world==='winter');
