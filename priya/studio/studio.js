@@ -179,7 +179,7 @@
       <button type="button" class="hue" style="background:hsl(${c.hue} 85% 55%)" aria-label="Change colour"></button>
       <input value="${esc(c.label)}" maxlength="32" aria-label="Category name">
       <button type="button" class="up" aria-label="Move up">↑</button><button type="button" class="down" aria-label="Move down">↓</button><button type="button" class="del" aria-label="Remove category">✕</button>
-      <small>${counts[c.id] || 0} photographs</small></div>`).join('');
+      <small>${counts[c.id] || 0} photograph${counts[c.id] === 1 ? "" : "s"}</small></div>`).join('');
   }
   $('#cats').addEventListener('input', e => { const row = e.target.closest('.cat'); if (row) draft[row.dataset.i].label = e.target.value; });
   $('#cats').addEventListener('click', e => {
