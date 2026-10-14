@@ -63,7 +63,17 @@ async function image(name, env) {
 /* Priya's studio. Every call needs the passcode. */
 async function studio(request, env, route) {
   if (!env.PHOTOS || !env.STUDIO_KEY) return json({ error: 'setup', message: 'The studio is not switched on yet.' }, 503);
-  if (!(await sameKey(request.headers.get('x-studio-key') || '', env.STUDIO_KEY))) return json({ error: 'passcode', message: 'That passcode did not match.' }, 401);
+  // Slow down guessing: 8 wrong passcodes from one address locks it out for 15 minutes.
+  const ip = await digest(request.headers.get('cf-connecting-ip') || 'unknown');
+  const failKey = `meta/fail/${ip.slice(0, 32)}`;
+  const failed = await env.PHOTOS.get(failKey).then(o => o && o.json()).catch(() => null);
+  const fresh = failed && Date.now() - failed.t < 15 * 60 * 1000;
+  if (fresh && failed.n >= 8) return json({ error: 'locked', message: 'Too many tries. Please wait 15 minutes.' }, 429);
+  if (!(await sameKey(request.headers.get('x-studio-key') || '', env.STUDIO_KEY))) {
+    await env.PHOTOS.put(failKey, JSON.stringify({ n: fresh ? failed.n + 1 : 1, t: fresh ? failed.t : Date.now() }));
+    return json({ error: 'passcode', message: 'That passcode did not match.' }, 401);
+  }
+  if (failed) await env.PHOTOS.delete(failKey);
   const lib = await library(env, request);
   const save = async () => { await env.PHOTOS.put(META, JSON.stringify(lib), { httpMetadata: { contentType: 'application/json' } }); return json(lib); };
 
@@ -147,4 +157,9 @@ async function sameKey(given, expected) {
   let diff = 0;
   for (let i = 0; i < x.length; i++) diff |= x[i] ^ y[i];
   return diff === 0 && given.length > 0;
+}
+
+async function digest(value) {
+  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
