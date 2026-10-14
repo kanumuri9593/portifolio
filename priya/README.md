@@ -47,3 +47,5 @@ Scroll through the opening scene to travel from Kandavalli to New York, Oneonta 
 2. A secret `STUDIO_KEY`: the passcode Priya types in the studio.
 
 Without them the photo page shows the built-in collection and the studio says it isn't switched on. The library (categories, photos, booking link) lives in R2 at `meta/library.json`; it starts as a copy of the built-in photographs the first time Priya saves anything.
+
+After adding or changing the binding or the secret, redeploy (Deployments → Retry deployment, or merge any change to `main`); settings only reach the site on the next deploy. Eight wrong passcodes from one address lock it out for 15 minutes.
