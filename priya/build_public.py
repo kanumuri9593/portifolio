@@ -3,6 +3,7 @@
 import argparse
 import html
 import json
+import posixpath
 import re
 from html.parser import HTMLParser
 from pathlib import Path
@@ -74,7 +75,8 @@ def build(source, output):
     index = re.sub(r'''<meta\b[^>]*(?:property|name)=["']og:url["'][^>]*>''', '', index, flags=re.I)
     index = index.replace('</head>', f'<link rel="canonical" href="{ORIGIN}/"><meta property="og:url" content="{ORIGIN}/"></head>')
     virtual = {'index.html': index, 'gallery-seed.json': gallery}
-    pending = ['index.html', 'gallery-seed.json']
+    # Extra pages: the photo page and Priya's online studio (private, behind its passcode).
+    pending = ['index.html', 'gallery-seed.json', 'photos/index.html', 'studio/index.html']
     staged = {}
     while pending:
         relative = pending.pop()
@@ -96,7 +98,7 @@ def build(source, output):
                 parsed = urlsplit(html.unescape(url))
                 if parsed.scheme or parsed.netloc or not parsed.path or parsed.path == '/':
                     continue
-                if parsed.path == '/api/gallery.json':
+                if parsed.path == '/api/gallery.json' or parsed.path.startswith(('/api/', '/img/')):
                     continue
                 raw = unquote(parsed.path)
                 if raw.startswith('#'):
@@ -104,6 +106,8 @@ def build(source, output):
                 # assets literals are source-root relative throughout this portfolio.
                 path = source / raw.lstrip('/') if raw.startswith('/') or raw.startswith('assets/') else candidate.parent / raw
                 resolved = path.resolve()
+                if resolved.is_dir():
+                    resolved = resolved / 'index.html'
                 if not resolved.is_relative_to(source):
                     raise ValueError(f'Unsafe dependency in {relative}: {url}')
                 dependency = resolved.relative_to(source).as_posix()
@@ -113,12 +117,13 @@ def build(source, output):
             staged[relative] = candidate.read_bytes()
     # Version local styles and scripts by content so phones never keep a stale copy after a deploy.
     import hashlib
-    def bust(match):
-        ref = match.group(2)
-        if ref in staged:
-            return f'{match.group(1)}{ref}?v={hashlib.sha1(staged[ref]).hexdigest()[:10]}"'
-        return match.group(0)
     for page in [r for r in staged if r.endswith('.html')]:
+        def bust(match, base=Path(page).parent):
+            ref = match.group(2)
+            key = ref.lstrip('/') if ref.startswith('/') else posixpath.normpath(posixpath.join(base.as_posix(), ref))
+            if key in staged:
+                return f'{match.group(1)}{ref}?v={hashlib.sha1(staged[key]).hexdigest()[:10]}"'
+            return match.group(0)
         staged[page] = re.sub(r'((?:src|href)=")([^"?#:]+\.(?:css|js))"', bust, staged[page].decode('utf-8')).encode('utf-8')
     output.mkdir(parents=True, exist_ok=True)
     for relative, payload in staged.items():
@@ -127,10 +132,12 @@ def build(source, output):
         target.write_bytes(payload)
     (output / 'api').mkdir(exist_ok=True)
     (output / 'api' / 'gallery.json').write_text('{"items":[]}\n')
-    (output / '_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/\n  Cache-Control: no-cache\n/index.html\n  Cache-Control: no-cache\n')
+    (output / '_worker.js').write_text((source / 'worker.js').read_text())
+    (output / '_routes.json').write_text('{"version":1,"include":["/api/*","/img/*"],"exclude":[]}\n')
+    (output / '_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/\n  Cache-Control: no-cache\n/index.html\n  Cache-Control: no-cache\n/photos/*\n  Cache-Control: no-cache\n/studio/*\n  Cache-Control: no-cache\n  X-Robots-Tag: noindex\n')
     (output / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n')
-    (output / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{ORIGIN}/</loc></url></urlset>\n')
-    print(f'Built {len(staged) + 4} public files, {len(merged)} gallery items in {output}')
+    (output / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{ORIGIN}/</loc></url><url><loc>{ORIGIN}/photos/</loc></url></urlset>\n')
+    print(f'Built {len(staged) + 6} public files, {len(merged)} gallery items in {output}')
 
 
 if __name__ == '__main__':
