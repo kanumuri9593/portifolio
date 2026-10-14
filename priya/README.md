@@ -36,3 +36,14 @@ Original photography and recipe sources are recorded in `ASSET-SOURCES.md`. Illu
 ## Four-place opening journey
 
 Scroll through the opening scene to travel from Kandavalli to New York, Oneonta and home. The attire, backdrop, headline, description and call to action change together. Place buttons jump directly to that chapter. The motion control pauses atmospheric animation without preventing chapter navigation. Reduced-motion preferences and short viewports use a compact, manually switchable layout so every control stays reachable.
+
+## Photo page and online studio
+
+`photos/` is the public photo page at `/photos/`. `studio/` is Priya's private studio at `/studio/`: from her phone she adds photographs (resized on the phone before upload), picks or creates a category, edits titles, sets the cover photo, hides or removes photos, manages categories, and sets the booking link behind "Let's chat".
+
+`worker.js` is published as `_worker.js` and handles only `/api/*` and `/img/*` (see `_routes.json` in the build). It needs two Cloudflare Pages settings on project `priya-portfolio`, for Production and Preview:
+
+1. An R2 bucket (for example `priya-photos`) bound as `PHOTOS`.
+2. A secret `STUDIO_KEY`: the passcode Priya types in the studio.
+
+Without them the photo page shows the built-in collection and the studio says it isn't switched on. The library (categories, photos, booking link) lives in R2 at `meta/library.json`; it starts as a copy of the built-in photographs the first time Priya saves anything.

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#14110f">
+<title>Shine with Shutter · Photographs by Priya</title>
+<meta name="description" content="Photographs by Padmapriya Jampana: people, places and the little things, for the moments you want to keep.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Priya · A little world of wonder">
+<meta property="og:title" content="Shine with Shutter · Photographs by Priya">
+<meta property="og:description" content="People, places and the little things. For the moments you want to keep.">
+<meta property="og:image" content="https://priya.oneenergytogether.com/assets/og-share.jpg"><meta property="og:image:width" content="2400"><meta property="og:image:height" content="1254">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400,50,1;0,9..144,500,50,1;1,9..144,400,50,1;1,9..144,500,50,1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="photos.css">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../" aria-label="Back to Priya's home">priya<span>✳</span></a>
+  <a class="mark" href="#top" aria-label="Shine with Shutter"><svg viewBox="-50 -50 100 100" aria-hidden="true"><g class="blades"></g><circle r="46" class="ring"/></svg><b>Shine with Shutter</b></a>
+  <button class="chat-mini" type="button" data-chat>Let's chat</button>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="lens" aria-hidden="true">
+      <img class="lens-photo" alt="" decoding="async">
+      <svg class="iris" viewBox="-50 -50 100 100" preserveAspectRatio="xMidYMid slice"><g class="iris-blades"></g></svg>
+    </div>
+    <div class="hero-copy">
+      <p class="kicker"><i></i>PHOTOGRAPHS BY PADMAPRIYA JAMPANA</p>
+      <h1 id="hero-title">For the moments<br>you want to <em>keep.</em></h1>
+      <p class="hero-line">People, places, and the little things that make a day feel like yours.</p>
+      <p class="frames"><span id="count">00</span> frames · <span id="cats">0</span> stories · scroll to develop</p>
+    </div>
+  </section>
+
+  <nav class="chips" aria-label="Photo categories"><div class="chip-track" id="chips" role="tablist"></div></nav>
+
+  <section class="sheet" aria-live="polite">
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No photographs here yet. Soon.</p>
+  </section>
+
+  <section class="outro">
+    <p class="kicker"><i></i>HAVE AN IDEA?</p>
+    <h2>Let's make something <em>together.</em></h2>
+    <p>A portrait, a place, a story you want kept. Tell me a little about it.</p>
+    <button class="btn" type="button" data-chat>Schedule a quick call <span aria-hidden="true">✳</span></button>
+    <p class="outro-links"><a href="https://www.instagram.com/shinewithshutter/" target="_blank" rel="noopener">@shinewithshutter</a><a href="../">Back to my little world</a></p>
+  </section>
+</main>
+
+<div class="shutter" aria-hidden="true"><svg viewBox="-50 -50 100 100" preserveAspectRatio="xMidYMid slice"><g class="shutter-blades"></g></svg></div>
+
+<button class="fab" type="button" data-chat aria-label="Schedule a call with Priya"><svg viewBox="-50 -50 100 100" aria-hidden="true"><g class="blades"></g><circle r="46" class="ring"/></svg><span>Let's chat</span></button>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photograph">
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""><img id="lb-next" alt="" aria-hidden="true"></div>
+  <div class="lb-top"><span id="lb-count"></span><button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button></div>
+  <div class="lb-info"><p class="lb-cat" id="lb-cat"></p><h3 id="lb-title"></h3><p id="lb-caption"></p></div>
+  <div class="strip" id="strip"></div>
+  <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Previous photograph">‹</button>
+  <button type="button" class="lb-nav next" id="lb-next-btn" aria-label="Next photograph">›</button>
+</dialog>
+
+<dialog class="chat" id="chat" aria-labelledby="chat-title">
+  <div class="grab" aria-hidden="true"></div>
+  <p class="kicker"><i></i>SAY HELLO</p>
+  <h2 id="chat-title">Let's talk it <em>through.</em></h2>
+  <p class="chat-line">Twenty minutes, no pressure. Bring the idea, however small.</p>
+  <div class="chat-book" id="chat-book"></div>
+  <form class="chat-form" id="chat-form" hidden>
+    <label>Your name<input name="name" autocomplete="name" required></label>
+    <fieldset><legend>When suits you?</legend><div class="days" id="days"></div><div class="slots"><label><input type="radio" name="slot" value="morning" checked><span>Morning</span></label><label><input type="radio" name="slot" value="afternoon"><span>Afternoon</span></label><label><input type="radio" name="slot" value="evening"><span>Evening</span></label></div></fieldset>
+    <label>What's on your mind?<textarea name="idea" rows="2" placeholder="A family portrait, a little shoot by the river…"></textarea></label>
+    <button class="btn" type="submit">Send my request <span aria-hidden="true">✳</span></button>
+    <p class="fine">This opens your email app with everything filled in.</p>
+  </form>
+  <div class="chat-quick">
+    <a href="mailto:priyajampana.portraits@gmail.com?subject=Hello%20from%20your%20photographs" class="quick"><b>Email</b><span>priyajampana.portraits@gmail.com</span></a>
+    <a href="https://ig.me/m/shinewithshutter" target="_blank" rel="noopener" class="quick"><b>Instagram</b><span>Send a message</span></a>
+  </div>
+  <button type="button" class="chat-close" id="chat-close" aria-label="Close">×</button>
+</dialog>
+
+<script src="photos.js" defer></script>
+</body></html>
