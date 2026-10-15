@@ -284,7 +284,7 @@ section{position:relative}
 .how__list .mono{color:var(--green);font-weight:600}
 .how__list b{display:block;margin:10px 0 8px;font-size:1.08rem;letter-spacing:-.01em}
 .how__list p{margin:0;color:var(--paper-mute);font-size:.94rem}
-.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(56px,8vw,96px)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(56px,8vw,96px)}
 .plan{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:22px;background:#fff;box-shadow:0 1px 0 rgba(20,19,15,.06),0 20px 40px -30px rgba(20,19,15,.4)}
 .plan h3{margin:0;font:600 1.05rem var(--sans)}
 .plan__price{margin:10px 0 0;color:var(--paper-mute);font-size:.9rem}
@@ -303,7 +303,8 @@ section{position:relative}
 .plan--dark .plan__price,.plan--dark .plan__price span{color:#eeeae2}
 .plan--dark ul{border-color:rgba(255,255,255,.12)}
 .plan--dark li::before{border-color:var(--lime)}
-.studio__cta{margin-top:40px;display:flex;justify-content:center}
+.plans__note{margin:20px 0 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--paper-ink)}
+.studio__cta{margin-top:28px;display:flex;justify-content:center}
 
 /* ============ SERVICES ============ */
 .svc{margin-top:48px;border-top:1px solid var(--line)}
@@ -411,7 +412,6 @@ section{position:relative}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:1080px){
-  .plans{grid-template-columns:1fr 1fr}
   .ind__grid{grid-template-columns:repeat(3,1fr)}
   .how__list{grid-template-columns:1fr 1fr;row-gap:24px}
   .how__list li:nth-child(3){padding-left:0;border-left:0}
