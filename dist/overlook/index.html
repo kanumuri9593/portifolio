@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Overlook on Swart Hollow · Weddings &amp; Events in Oneonta, NY</title>
+<meta name="description" content="A private hilltop meadow above the Susquehanna valley in Oneonta, New York. Weddings, elopements, rehearsal dinners, retreats, reunions and every celebration worth the drive.">
+<meta name="theme-color" content="#1c2a22">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The Overlook on Swart Hollow">
+<meta property="og:description" content="Say it on the hilltop. Weddings and gatherings above the Oneonta valley.">
+<meta property="og:image" content="https://yeswanth.oneenergytogether.com/overlook/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/valley-land.webp">
+<link rel="preload" as="image" href="img/valley-sky.webp">
+<link rel="stylesheet" href="overlook.css">
+</head>
+<body class="is-loading">
+
+<!-- Loader: the real ridgeline of the view draws itself -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader__ridge" viewBox="0 250 1920 110" preserveAspectRatio="none"><path id="ridgePath" d=""/></svg>
+  <div class="loader__word">The Overlook <em>on Swart Hollow</em></div>
+</div>
+
+<header class="top" id="top">
+  <a class="brand" href="#hero" aria-label="The Overlook on Swart Hollow, back to top">
+    <svg class="brand__mark" viewBox="0 0 64 32" aria-hidden="true"><path d="M2 24 C10 20 14 22 20 19 S30 17 34 15 L36 6 L38 15 C44 16 52 19 62 18" /><circle cx="36" cy="6" r="1.8"/></svg>
+    <span class="brand__word">The Overlook<small>on Swart Hollow</small></span>
+  </a>
+  <nav class="top__nav" aria-label="Sections">
+    <a href="#day">The day</a>
+    <a href="#events">Events</a>
+    <a href="#yards">Plan</a>
+    <a href="#seasons">Seasons</a>
+    <a href="#around">Oneonta</a>
+  </nav>
+  <a class="btn btn--small btn--glow" href="#tour">Book a tour</a>
+</header>
+
+<main>
+
+<!-- 1 · HERO: a whole day on the hill, scrubbed by scroll -->
+<section class="hero" id="hero" aria-label="The Overlook on Swart Hollow">
+  <div class="hero__stage">
+    <div class="sky">
+      <div class="g g--day"></div>
+      <div class="frame" id="heroFrame">
+        <img class="frame__sky" src="img/valley-sky.webp" alt="" width="1920" height="888">
+        <div class="sun" id="sun"></div>
+      </div>
+      <div class="g g--gold"></div>
+      <div class="g g--dusk"></div>
+      <div class="g g--night"></div>
+      <canvas class="stars" id="stars"></canvas>
+    </div>
+    <div class="frame frame--land" id="heroLand">
+      <img class="frame__land" src="img/valley-land.webp" alt="Autumn hills rolling away from the Overlook's meadow under a big blue sky" width="1920" height="888">
+      <div class="tint tint--gold"></div>
+      <div class="tint tint--dusk"></div>
+      <div class="tint tint--night"></div>
+      <div class="town" id="town"></div>
+      <span class="mast" style="left:72.5%;top:30.2%"></span>
+    </div>
+    <div class="hero__scrim"></div>
+
+    <div class="hero__copy">
+      <p class="kicker" id="heroKicker">Oneonta, NY &middot; Swart Hollow Road</p>
+      <h1 class="hero__title" id="heroTitle"><span class="l1">The Overlook</span> <span class="l2">on Swart Hollow</span></h1>
+      <p class="hero__sub" id="heroSub">A private hilltop meadow above the Susquehanna valley, for weddings and every celebration worth the drive.</p>
+      <div class="hero__cta">
+        <a class="btn btn--glow" href="#tour">Book a tour</a>
+        <a class="btn btn--ghost" href="#day">See the day</a>
+      </div>
+    </div>
+
+    <div class="clock" id="heroClock" aria-hidden="true">
+      <span class="clock__dot"></span><b id="heroTime">11:00 am</b><span id="heroPhase">Morning on the hill</span>
+    </div>
+    <div class="cue" aria-hidden="true"><span></span>Scroll the day</div>
+  </div>
+</section>
+
+<!-- 2 · Intro + numbers -->
+<section class="intro" id="intro">
+  <p class="intro__lede reveal-words">Some views you take in. <em>This one takes you in.</em> One celebration a day, the whole hill to yourselves, and a valley that changes colour while you say the words.</p>
+  <div class="stats">
+    <div class="stat"><b data-count="1">0</b><span>celebration a day. The hill is yours from setup to sparklers.</span></div>
+    <div class="stat"><b data-count="250">0</b><span>guests under one draped tent, or ten on the meadow's edge.</span></div>
+    <div class="stat"><b data-count="30" data-suffix=" min">0</b><span>to Cooperstown, the lake and the Hall of Fame.</span></div>
+    <div class="stat"><b data-count="3.5" data-suffix=" hrs" data-dec="1">0</b><span>from Manhattan, and a world away from it.</span></div>
+  </div>
+</section>
+
+<!-- 3 · The day, hour by hour: tent from afternoon to sparklers -->
+<section class="day" id="day" aria-label="A wedding day at the Overlook">
+  <div class="day__pin">
+    <div class="day__head">
+      <p class="kicker kicker--dark">The day, hour by hour</p>
+      <h2 class="h2">From first look to <em>last sparkler</em></h2>
+    </div>
+    <div class="day__body">
+      <div class="tentstage" id="tentStage">
+        <div class="g g--day2"></div>
+        <img class="ts__sky" src="img/tent-sky.webp" alt="" loading="lazy">
+        <div class="g g--gold2"></div>
+        <div class="g g--dusk2"></div>
+        <div class="g g--night2"></div>
+        <canvas class="ts__stars" id="tentStars"></canvas>
+        <img class="ts__land" src="img/tent-land.webp" alt="A draped white tent on the Overlook's meadow beside autumn trees" loading="lazy">
+        <div class="tint2 tint2--gold"></div>
+        <div class="tint2 tint2--dusk"></div>
+        <div class="tint2 tint2--night"></div>
+        <img class="ts__glow" src="img/tent-glow.webp" alt="" loading="lazy">
+        <svg class="ts__lights" viewBox="0 0 828 689" aria-hidden="true">
+          <defs>
+            <radialGradient id="pool"><stop offset="0" stop-color="#ffcf7a" stop-opacity=".75"/><stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/></radialGradient>
+            <filter id="bloom" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+          </defs>
+          <ellipse class="ts__pool" cx="480" cy="438" rx="300" ry="62" fill="url(#pool)"/>
+          <g class="ts__bulbs" id="bulbs"></g>
+        </svg>
+        <canvas class="ts__fx" id="tentFx"></canvas>
+      </div>
+      <div class="beats" id="beats">
+        <div class="beats__clock"><b id="beatTime">3:45 pm</b><span id="beatDate">Saturday, October 10</span></div>
+        <ol class="beats__list" id="beatList"></ol>
+        <div class="beats__bar"><i id="beatBar"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Events -->
+<section class="events" id="events">
+  <div class="wrap">
+    <p class="kicker kicker--dark">Every reason to gather</p>
+    <h2 class="h2">Weddings, yes. <em>And everything else worth celebrating.</em></h2>
+  </div>
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<!-- 5 · The nine yards: interactive tent planner -->
+<section class="yards" id="yards">
+  <div class="wrap">
+    <p class="kicker">The whole nine yards</p>
+    <h2 class="h2 h2--light">Plan the tent <em>in ten seconds</em></h2>
+    <p class="lede lede--light">Slide your guest count. We size the tent, set the tables and keep room to dance, the same way the Overlook's team plans it with you.</p>
+  </div>
+  <div class="planner">
+    <div class="planner__controls">
+      <label class="slider">
+        <span class="slider__label">Guests <b id="gCount">120</b></span>
+        <input type="range" id="guests" min="10" max="250" step="5" value="120" aria-label="Number of guests">
+      </label>
+      <div class="seg" role="radiogroup" aria-label="Table style">
+        <button class="seg__b is-on" data-style="farm" role="radio" aria-checked="true">Farm tables</button>
+        <button class="seg__b" data-style="round" role="radio" aria-checked="false">Rounds</button>
+      </div>
+      <div class="chips" id="addons">
+        <button class="chip is-on" data-add="dance" aria-pressed="true">Dance floor</button>
+        <button class="chip is-on" data-add="bar" aria-pressed="true">Bar</button>
+        <button class="chip" data-add="lounge" aria-pressed="false">Lounge</button>
+        <button class="chip" data-add="band" aria-pressed="false">Band stage</button>
+      </div>
+      <div class="pstats">
+        <div><b id="pTent">40 × 60</b><span>tent, in feet</span></div>
+        <div><b id="pTables">15</b><span id="pTablesLabel">farm tables</span></div>
+        <div><b id="pSq">2,400</b><span>square feet</span></div>
+      </div>
+    </div>
+    <div class="planner__plan">
+      <svg id="plan" viewBox="0 0 640 440" role="img" aria-label="Top-down tent layout"></svg>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3 class="h3 h3--light">Every yard, included</h3>
+    <ol class="nine" id="nine">
+      <li><b>01</b><span>The meadow, all day</span><small>Setup at 10, last song at 11. No one else books the hill that day.</small></li>
+      <li><b>02</b><span>A draped frame tent</span><small>Sized to your guest list, with sheer curtains tied back to the view.</small></li>
+      <li><b>03</b><span>Crossback chairs and farm tables</span><small>Linens, too. No rental hunt, no delivery fees.</small></li>
+      <li><b>04</b><span>Bistro lights and lanterns</span><small>Warm string lights inside, lantern path to the parking lot.</small></li>
+      <li><b>05</b><span>Wine-barrel cocktail tables</span><small>Set out on the lawn for cocktail hour, as in the photos.</small></li>
+      <li><b>06</b><span>A getting-ready cottage</span><small>Mirrors, natural light and coffee for the morning.</small></li>
+      <li><b>07</b><span>Bonfire and s'mores</span><small>The fire pit is lit after dark for the late-night crowd.</small></li>
+      <li><b>08</b><span>Parking and a meadow shuttle</span><small>A golf-cart shuttle carries grandparents up from the lot.</small></li>
+      <li><b>09</b><span>A day-of coordinator</span><small>One person who knows the hill and runs the timeline.</small></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 6 · Seasons with real sun math for Oneonta -->
+<section class="seasons" id="seasons">
+  <div class="wrap">
+    <p class="kicker kicker--dark">Pick your date</p>
+    <h2 class="h2">Every month paints <em>a different hill</em></h2>
+    <p class="lede">Choose a month or a date. Sunset, golden hour and the day's timeline are calculated for this hilltop in Oneonta.</p>
+  </div>
+  <div class="months" id="months" role="tablist" aria-label="Month"></div>
+  <div class="season">
+    <div class="season__card" id="seasonCard">
+      <p class="season__name" id="sName">Peak foliage</p>
+      <p class="season__note" id="sNote"></p>
+      <label class="datepick">Your date <input type="date" id="datePick"></label>
+    </div>
+    <div class="season__facts">
+      <div class="fact"><span>Sunset</span><b id="fSet">6:26 pm</b></div>
+      <div class="fact"><span>Golden hour from</span><b id="fGold">5:44 pm</b></div>
+      <div class="fact"><span>Suggested ceremony</span><b id="fCer">4:00 pm</b></div>
+      <div class="fact"><span>Typical high / low</span><b id="fTemp">58° / 37°</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Around Oneonta -->
+<section class="around" id="around">
+  <div class="wrap">
+    <p class="kicker">Make it a weekend</p>
+    <h2 class="h2 h2--light">Oneonta, <em>the City of the Hills</em></h2>
+    <p class="lede lede--light">Your guests come for a day and stay for three. Tap a place on the map.</p>
+  </div>
+  <div class="mapwrap">
+    <svg class="map" id="map" viewBox="0 0 600 520" role="img" aria-label="Map of the Overlook, Oneonta and Cooperstown">
+      <defs>
+        <linearGradient id="lake" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7cc4e8"/><stop offset="1" stop-color="#4f9ccc"/></linearGradient>
+      </defs>
+      <g class="map__hills" id="mapHills"></g>
+      <path class="map__lake" d="M331 0 C 322 30, 340 60, 333 92 C 329 110, 342 122, 338 128 C 346 118, 352 96, 350 70 C 349 42, 356 20, 352 0 Z" fill="url(#lake)"/>
+      <path class="map__river draw" d="M338 130 C 330 170, 300 200, 290 240 C 280 290, 262 330, 240 370 C 225 398, 190 420, 150 440 C 110 460, 70 470, 20 500"/>
+      <path class="map__road draw" d="M30 500 C 90 470, 160 430, 226 393 C 270 370, 320 352, 380 320 C 430 292, 470 252, 590 196"/>
+      <path class="map__route draw" id="routeCoop" d="M289 373 C 300 330, 310 260, 325 200 C 330 170, 336 145, 337 128"/>
+      <g id="pins"></g>
+      <text class="map__label map__label--road" x="470" y="262" transform="rotate(-27 470 262)">I-88</text>
+      <text class="map__label map__label--water" x="262" y="300" transform="rotate(-62 262 300)">Susquehanna</text>
+      <text class="map__label map__label--water" x="356" y="40">Otsego Lake</text>
+    </svg>
+    <div class="place" id="place" aria-live="polite"></div>
+  </div>
+  <div class="wrap">
+    <div class="guide">
+      <div class="guide__col">
+        <h3 class="h3 h3--light">Getting here</h3>
+        <ul>
+          <li><b>New York City</b> about 3.5 hours by car, or Trailways bus to Oneonta</li>
+          <li><b>Albany airport (ALB)</b> about 1 hour 15 minutes</li>
+          <li><b>Binghamton airport (BGM)</b> about 1 hour</li>
+          <li><b>Syracuse airport (SYR)</b> about 1 hour 45 minutes</li>
+        </ul>
+      </div>
+      <div class="guide__col">
+        <h3 class="h3 h3--light">Where guests stay</h3>
+        <ul>
+          <li><b>Oneonta hotels</b> off I-88, 10 to 15 minutes away, with room blocks</li>
+          <li><b>Cooperstown inns</b> including the Otesaga on Otsego Lake</li>
+          <li><b>Farmhouse rentals</b> in the hills for the whole wedding party</li>
+          <li><b>Bell tents on the meadow</b> for the couple's closest friends</li>
+        </ul>
+      </div>
+      <div class="guide__col">
+        <h3 class="h3 h3--light">Before and after</h3>
+        <ul>
+          <li><b>Welcome drinks</b> on Main Street in downtown Oneonta</li>
+          <li><b>Morning-after brunch</b> back on the hill, or by the lake</li>
+          <li><b>A Cooperstown day</b> for the baseball fans in the family</li>
+          <li><b>Leaf-peeping drives</b> through the hollows in October</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · Voices -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <p class="kicker kicker--dark">Said on the hill</p>
+    <h2 class="h2">Guests don't forget <em>this one</em></h2>
+  </div>
+  <div class="quotes" id="quotes"></div>
+</section>
+
+<!-- 9 · Hosts -->
+<section class="hosts" id="hosts">
+  <div class="hosts__photo"><img src="img/path.webp" alt="The leaf-strewn path down to the tent on the meadow" loading="lazy" width="828" height="1057"></div>
+  <div class="hosts__copy">
+    <p class="kicker kicker--dark">Your hosts</p>
+    <h2 class="h2" id="hostName">Hosted by <em class="owner-name">the family on the hill</em></h2>
+    <p class="lede">They live just down Swart Hollow Road and host one celebration at a time. They'll walk the meadow with you, show you where the sun sets in your month, and still be there when the last sparkler burns out.</p>
+    <a class="btn btn--dark" href="#tour">Walk the meadow with us</a>
+  </div>
+</section>
+
+<!-- 10 · Save the date maker -->
+<section class="std" id="std">
+  <div class="wrap">
+    <p class="kicker kicker--dark">Already picturing it?</p>
+    <h2 class="h2">Make your save-the-date <em>right here</em></h2>
+    <p class="lede">Type your names. We set the card on the Overlook's view with your date and that evening's sunset. Download it or send it straight from your phone.</p>
+  </div>
+  <div class="std__grid">
+    <form class="std__form" id="stdForm" onsubmit="return false">
+      <label>Your names <input id="stdNames" maxlength="40" placeholder="Hannah &amp; Luis" autocomplete="off"></label>
+      <label>Date <input type="date" id="stdDate"></label>
+      <div class="std__btns">
+        <button class="btn btn--dark" type="button" id="stdShare">Share</button>
+        <button class="btn btn--line" type="button" id="stdSave">Download</button>
+      </div>
+    </form>
+    <div class="std__card"><canvas id="stdCanvas" width="1080" height="1350" aria-label="Save-the-date card preview"></canvas></div>
+  </div>
+</section>
+
+<!-- 11 · Tour -->
+<section class="tour" id="tour">
+  <div class="tour__bg" aria-hidden="true"><img src="img/barrels.webp" alt="" loading="lazy"></div>
+  <div class="tour__panel">
+    <p class="kicker">Come see the hill</p>
+    <h2 class="h2 h2--light">Book a tour <em>at golden hour</em></h2>
+    <form class="form" id="tourForm" novalidate>
+      <div class="form__row">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="form__row">
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Event<select name="event" id="eventSelect"></select></label>
+      </div>
+      <div class="form__row">
+        <label>Date<input name="date" type="date" id="tourDate"></label>
+        <label>Guests<input name="guests" type="number" min="2" max="250" inputmode="numeric" placeholder="120"></label>
+      </div>
+      <label>Anything we should know?<textarea name="msg" rows="3" placeholder="A first dance song, a dog in the wedding party, a grandmother who needs the shuttle..."></textarea></label>
+      <button class="btn btn--glow btn--wide" type="submit">Request my tour</button>
+      <p class="form__note">We reply within a day. Tours run daily, best an hour before sunset.</p>
+    </form>
+    <div class="thanks" id="thanks" hidden>
+      <div class="lanterns" id="lanterns" aria-hidden="true"></div>
+      <h3 class="h3 h3--light" id="thanksTitle">Thank you.</h3>
+      <p id="thanksMsg"></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <svg class="foot__ridge" viewBox="0 250 1920 110" preserveAspectRatio="none" aria-hidden="true"><path id="footRidge" d=""/></svg>
+  <div class="foot__in">
+    <div>
+      <p class="foot__name">The Overlook <em>on Swart Hollow</em></p>
+      <p>Swart Hollow Road, Oneonta, New York 13820</p>
+    </div>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="#day">The day</a><a href="#events">Events</a><a href="#yards">Plan</a><a href="#seasons">Seasons</a><a href="#around">Oneonta</a><a href="#tour">Tour</a>
+    </nav>
+    <p class="foot__credit">Concept site &middot; Studio by One Energy Together</p>
+  </div>
+</footer>
+
+<canvas class="drift" id="drift" aria-hidden="true"></canvas>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="overlook.js"></script>
+</body>
+</html>

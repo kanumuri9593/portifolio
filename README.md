@@ -46,3 +46,13 @@ Personal images, project names, and product screens belong to their respective o
 No license to reuse personal identity, photographs, or third-party brands is granted by making this source visible. No client application source code or private résumé file is included.
 
 Public source: https://github.com/kanumuri9593/portifolio
+
+## The Overlook on Swart Hollow (concept)
+
+`dist/overlook/` (live at `/overlook/`): a pitch demo for a wedding and events venue on Swart Hollow Road in Oneonta, NY. Self-contained static page; GSAP + ScrollTrigger + SplitText and Lenis are vendored in `dist/overlook/vendor`.
+
+- The hero and tent photos are split into sky and land layers (traced ridgeline), so scrolling relights the real view from morning to stars.
+- Sunset, golden hour and the day's timeline are computed for the hilltop for any date (NOAA sunrise equation).
+- The tent planner, save-the-date card maker and tour form run entirely in the browser. The tour form shows a confirmation only; it does not send anything yet.
+- Personalise for a pitch with URL parameters: `?owner=Name` (host name) and `?for=Ana%20%26%20Sam` (couple).
+- Testimonials are illustrative. The page carries `noindex` until the owner approves the copy.
