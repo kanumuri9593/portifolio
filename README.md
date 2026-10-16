@@ -56,3 +56,12 @@ Public source: https://github.com/kanumuri9593/portifolio
 - The tent planner, save-the-date card maker and tour form run entirely in the browser. The tour form shows a confirmation only; it does not send anything yet.
 - Personalise for a pitch with URL parameters: `?owner=Name` (host name) and `?for=Ana%20%26%20Sam` (couple).
 - Testimonials are illustrative. The page carries `noindex` until the owner approves the copy.
+
+## Vana (concept)
+
+`dist/vana/` (live at `/vana/`): a brand preview for Vana, a kids' craft chocolate made from single-origin Godavari cacao. Self-contained static page (`index.html`, `vana.css`, `vana.js`), no dependencies beyond Google Fonts.
+
+- Every animal is a brick-pixel grid in `vana.js` (`ANIMALS`, `ICONS`), so new animals are one array each.
+- The playground lets visitors drag (or tap) four chunks of an animal onto the board; touch and mouse both work.
+- Day/night toggle, collectible animal cards, a flippable front-of-pack label, and a sideways "tree to treat" journey.
+- The first-batch form only saves to the visitor's browser; it sends nothing yet. The page carries `noindex` and names no founders.
