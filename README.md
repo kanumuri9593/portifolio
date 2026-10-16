@@ -59,7 +59,7 @@ Public source: https://github.com/kanumuri9593/portifolio
 
 ## Vana (concept)
 
-`dist/vana/` (live at `/vana/`): a brand preview for Vana, a kids' craft chocolate made from single-origin Godavari cacao. Self-contained static page (`index.html`, `vana.css`, `vana.js`), no dependencies beyond Google Fonts.
+`dist/vana/` (live at `/vana/`): a brand preview for Vana, a kids' craft chocolate made from single-origin Godavari cacao. Each pack pairs a chocolate bar with a punch-out cardboard animal kit that slots into the others. Self-contained static page (`index.html`, `vana.css`, `vana.js`), no dependencies beyond Google Fonts.
 
 - Every animal is a brick-pixel grid in `vana.js` (`ANIMALS`, `ICONS`), so new animals are one array each.
 - The playground lets visitors drag (or tap) four chunks of an animal onto the board; touch and mouse both work.

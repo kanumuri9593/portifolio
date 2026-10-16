@@ -155,8 +155,9 @@
       if (r.bottom < 0 || r.top > innerHeight) return;
       heroIdx = (heroIdx + 1) % heroCycle.length;
       const a = ANIMALS[heroCycle[heroIdx]];
-      heroArt.setAttribute("aria-label", `A ${a.name.toLowerCase()} made of chocolate bricks`);
       paint(heroArt, a.grid, true);
+      const lab = document.querySelector(".kit__label");
+      if (lab) lab.textContent = `Punch-out ${a.name.split(" ").pop().toLowerCase()} · 4 pieces`;
     }, 4200);
   }
 
@@ -261,7 +262,7 @@
     el.setAttribute("tabindex", "0");
     el.setAttribute("aria-label", `Piece ${k + 1} of 4`);
     const art = document.createElement("div");
-    art.className = "brickart";
+    art.className = "brickart brickart--kraft";
     paint(art, CHUNKS[k].map((r) => grid[r]));
     el.appendChild(art);
     return el;
@@ -275,7 +276,7 @@
     board.classList.remove("is-done");
     board.innerHTML = "";
     ghost = document.createElement("div");
-    ghost.className = "brickart board__ghost";
+    ghost.className = "brickart brickart--kraft board__ghost";
     paint(ghost, ANIMALS[name].grid);
     const slotWrap = document.createElement("div");
     slotWrap.className = "board__slots";
@@ -312,7 +313,7 @@
   function finish() {
     const a = ANIMALS[current];
     board.classList.add("is-done");
-    ghost.className = "brickart board__real";
+    ghost.className = "brickart brickart--kraft board__real";
     paint(ghost, a.grid);
     $$(".board__slots", board).forEach((s) => (s.style.display = "none"));
     tray.hidden = true;
@@ -412,7 +413,7 @@
     btn.style.transitionDelay = i * 60 + "ms";
     btn.setAttribute("aria-label", `${a.name}. Tap to read about it.`);
     btn.innerHTML = `<div class="card__in">
-      <div class="card__f" style="--bgc:${a.bg}"><span class="card__home">No. ${String(i + 1).padStart(2, "0")}</span><div class="brickart brickart--mini" data-k="${key}"></div><span class="card__name">${a.name}</span></div>
+      <div class="card__f" style="--bgc:${a.bg}"><span class="card__home">No. ${String(i + 1).padStart(2, "0")}</span><div class="brickart brickart--mini brickart--kraft" data-k="${key}"></div><span class="card__name">${a.name}</span></div>
       <div class="card__b"><b>${a.name}</b><span>Home: ${a.home}</span><span>${a.fact}</span><em>${a.act}</em></div>
     </div>`;
     paint($(".brickart", btn), a.grid);

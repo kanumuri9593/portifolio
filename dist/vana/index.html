@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vana · Chocolate you build, then eat</title>
-<meta name="description" content="Single-origin Godavari cacao, moulded into chocolate bricks that snap together into India's forest animals. The whole recipe is printed on the front.">
+<title>Vana · Chocolate and a forest to build</title>
+<meta name="description" content="Every Vana pack has a bar of single-origin Godavari chocolate and a punch-out cardboard animal that slots together. Collect them all to build a forest.">
 <meta name="theme-color" content="#0f3d2a">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Vana · Build it. Break it. Eat it.">
-<meta property="og:description" content="Chocolate bricks from Godavari cacao that snap into forest animals. Four ingredients, printed on the front.">
+<meta property="og:title" content="Vana · Eat the chocolate. Build the forest.">
+<meta property="og:description" content="A bar of Godavari chocolate and a cardboard animal to build in every pack. Four ingredients, printed on the front.">
 <meta property="og:type" content="website">
 <link rel="icon" href="mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vana.css?v=1">
+<link rel="stylesheet" href="vana.css?v=2">
 </head>
 <body>
 
@@ -53,16 +53,20 @@
   <div class="hero__inner">
     <div class="hero__copy">
       <p class="eyebrow"><span class="dot"></span> Godavari cacao · made in India</p>
-      <h1 class="hero__title"><span>Build it.</span> <span>Break it.</span> <span>Eat it.</span></h1>
-      <p class="hero__lede">Chocolate bricks that snap together into India's forest animals. The whole recipe is printed on the front, big enough to read in the shop aisle. No label-squinting, no plastic toy, nothing to throw away.</p>
+      <h1 class="hero__title"><span>Eat the bar.</span> <span>Build the</span> <span>forest.</span></h1>
+      <p class="hero__lede">Every pack has a bar of real Godavari chocolate and a punch-out cardboard animal that slots together, Lego style. Every animal clicks onto the others, so the collection grows into a whole forest. The recipe is on the front, so there's no label to squint at.</p>
       <div class="hero__ctas">
         <a class="btn" href="#play">Build a tiger</a>
         <a class="btn btn--ghost" href="#unwrapped">What's inside?</a>
       </div>
     </div>
     <div class="hero__art">
-      <div class="brickart" id="heroArt" data-animal="tiger" aria-label="A tiger made of chocolate bricks" role="img"></div>
-      <div class="hero__tag"><b>6 bricks</b> one pack<br><b>4 things</b> in it</div>
+      <div class="hero__duo">
+        <div class="kit" aria-hidden="true"><div class="brickart brickart--kraft" id="heroArt" data-animal="tiger"></div><span class="kit__label">Punch-out tiger · 4 pieces</span></div>
+        <div class="choc" aria-hidden="true"><span class="choc__foil"></span><div class="choc__bar"></div><span class="choc__label">Godavari milk · 30 g</span></div>
+      </div>
+      <p class="sr">A cardboard tiger kit next to a chocolate bar</p>
+      <div class="hero__tag"><b>1 bar</b> to eat<br><b>1 animal</b> to build</div>
     </div>
   </div>
   <a class="scrollcue" href="#play" aria-label="Scroll to play"><span></span></a>
@@ -74,12 +78,12 @@
     <span>One origin: the Godavari delta</span><span class="sep"></span>
     <span>No palm oil</span><span class="sep"></span>
     <span>No artificial colours</span><span class="sep"></span>
-    <span>The chocolate is the toy</span><span class="sep"></span>
+    <span>The toy is cardboard, not plastic</span><span class="sep"></span>
     <span>Sugar grams on the front</span><span class="sep"></span>
     <span>One origin: the Godavari delta</span><span class="sep"></span>
     <span>No palm oil</span><span class="sep"></span>
     <span>No artificial colours</span><span class="sep"></span>
-    <span>The chocolate is the toy</span><span class="sep"></span>
+    <span>The toy is cardboard, not plastic</span><span class="sep"></span>
     <span>Sugar grams on the front</span><span class="sep"></span>
   </div>
 </section>
@@ -88,8 +92,8 @@
 <section class="play" id="play">
   <div class="section-head">
     <p class="kicker">The playground</p>
-    <h2>Build before you bite.</h2>
-    <p>Every pack is a forest animal in pieces. Drag the chunks onto the board, or tap one to send it home. Real bricks snap the same way.</p>
+    <h2>Pop it out. Slot it in.</h2>
+    <p>Every pack has a forest animal printed on a sheet of sturdy cardboard. Drag the pieces onto the board, or tap one to send it home. The real kit needs no glue and no scissors.</p>
   </div>
   <div class="play__animals" role="tablist" aria-label="Choose an animal">
     <button class="chip is-on" data-animal="tiger" role="tab" aria-selected="true">Tiger</button>
@@ -103,7 +107,7 @@
   </div>
   <div class="play__done" id="playDone" hidden>
     <p class="play__shout" id="playShout">Roar!</p>
-    <p>Built in <b id="playSnaps">4</b> snaps. In real life, this is the part where you eat it.</p>
+    <p>Built in <b id="playSnaps">4</b> snaps. In real life, this is when the chocolate comes out.</p>
     <button class="btn btn--ghost" id="playAgain" type="button">Build it again</button>
   </div>
 </section>
@@ -113,14 +117,14 @@
   <div class="section-head">
     <p class="kicker">Unwrapped</p>
     <h2>The label is on the front.</h2>
-    <p>Parents shouldn't need reading glasses and a chemistry degree in the toffee aisle. So the front of every Vana pack <em>is</em> the label.</p>
+    <p>Parents shouldn't need reading glasses and a chemistry degree in the toffee aisle. So the front of every Vana pack <em>is</em> the label, and the toy rides in its own sealed sleeve.</p>
   </div>
   <div class="unwrapped__grid">
     <div class="pack" id="pack">
       <div class="pack__inner">
         <div class="pack__face pack__front">
-          <div class="pack__top"><span class="pack__brand">vana</span><span class="pack__animal">Tiger · 6 bricks</span></div>
-          <div class="pack__mini brickart brickart--mini" data-animal="tiger" aria-hidden="true"></div>
+          <div class="pack__top"><span class="pack__brand">vana</span><span class="pack__animal">Bar + tiger kit</span></div>
+          <div class="pack__mini brickart brickart--mini brickart--kraft" data-animal="tiger" aria-hidden="true"></div>
           <ol class="pack__list">
             <li><b>Cacao</b> from the Godavari delta</li>
             <li><b>Milk</b> from Indian dairies</li>
@@ -130,10 +134,10 @@
           <div class="pack__sugar"><span>Sugar per pack</span><b>printed here, big</b></div>
         </div>
         <div class="pack__face pack__back">
-          <p class="pack__storyhead">Inside the sleeve</p>
-          <h3>The tiger card</h3>
-          <p>Where tigers live, what they eat, and one small thing a kid can do for them this week. Fold the sleeve and it becomes a stand for the tiger you just built.</p>
-          <p class="pack__note">Collect all twelve sleeves and they lock into one forest.</p>
+          <p class="pack__storyhead">In the toy sleeve</p>
+          <h3>The tiger kit</h3>
+          <p>Four punch-out cardboard pieces, no glue, no scissors. On the back of the sheet: where tigers live, what they eat, and one small thing a kid can do for them this week.</p>
+          <p class="pack__note">Every animal's base slots into the others. Twelve kits make one forest.</p>
         </div>
       </div>
       <button class="btn btn--ghost pack__flip" id="packFlip" type="button">Flip the pack</button>
@@ -141,8 +145,8 @@
     <ul class="promises">
       <li><span class="ico ico--leaf"></span><div><b>Four ingredients, no fine print.</b> If it isn't on the front, it isn't in the chocolate.</div></li>
       <li><span class="ico ico--sun"></span><div><b>Honest about sugar.</b> We sweeten with jaggery and we still call it sugar. We use less, and we print the grams where you can see them.</div></li>
-      <li><span class="ico ico--rainbow"></span><div><b>Colours from plants.</b> The bright bricks get their colour from beetroot, turmeric, butterfly pea flower and spirulina.</div></li>
-      <li><span class="ico ico--shield"></span><div><b>Nothing to swallow by mistake.</b> There's no plastic toy hiding in the pack. The chocolate is the toy.</div></li>
+      <li><span class="ico ico--rainbow"></span><div><b>Cardboard, not plastic.</b> The kit is printed board that goes in the recycling when the forest gets too big. Nothing ends up in a drawer of broken plastic.</div></li>
+      <li><span class="ico ico--shield"></span><div><b>Toy and treat kept apart.</b> The kit travels in its own sealed sleeve behind the bar, with big pieces made for ages three and up and certified to India's toy safety standard.</div></li>
     </ul>
   </div>
 </section>
@@ -162,8 +166,8 @@
       <li class="stop"><span class="stop__n">03</span><div class="stop__art brickart brickart--icon" data-icon="leaf"></div><h3>Ferment</h3><p>Beans rest in wooden boxes under banana leaves for about six days. This is where the flavour is born.</p></li>
       <li class="stop"><span class="stop__n">04</span><div class="stop__art brickart brickart--icon" data-icon="sun"></div><h3>Sun-dry</h3><p>A week on raised beds under the delta sun, turned by hand until they rattle.</p></li>
       <li class="stop"><span class="stop__n">05</span><div class="stop__art brickart brickart--icon" data-icon="flame"></div><h3>Roast &amp; grind</h3><p>Slow roast, crack, winnow, then stone-grind for days until it's silk.</p></li>
-      <li class="stop"><span class="stop__n">06</span><div class="stop__art brickart brickart--icon" data-icon="brick"></div><h3>Brick</h3><p>Tempered and poured into brick moulds with studs that really click.</p></li>
-      <li class="stop"><span class="stop__n">07</span><div class="stop__art brickart brickart--icon" data-icon="heart"></div><h3>Small hands</h3><p>Built into a tiger on the kitchen table. Then, slowly, not a tiger any more.</p></li>
+      <li class="stop"><span class="stop__n">06</span><div class="stop__art brickart brickart--icon" data-icon="brick"></div><h3>Bar</h3><p>Tempered, poured into small bars and wrapped in foil, next to a sealed cardboard kit.</p></li>
+      <li class="stop"><span class="stop__n">07</span><div class="stop__art brickart brickart--icon" data-icon="heart"></div><h3>Small hands</h3><p>The tiger gets built on the kitchen table. The bar gets shared. The forest grows by one animal.</p></li>
     </ol>
   </div>
   <div class="journey__hint" aria-hidden="true"><span></span> drag the river</div>
@@ -174,7 +178,7 @@
   <div class="section-head">
     <p class="kicker">Collect the forest</p>
     <h2>Twelve animals. One forest.</h2>
-    <p>Each pack is a different animal from India's wild places. Tap a card to meet it.</p>
+    <p>Each pack hides a different animal from India's wild places, and every base slots into the next. Tap a card to meet it.</p>
   </div>
   <div class="cards" id="cards"></div>
   <p class="collect__more">Six more are hiding in the forest. <a href="#join">Vote for the next one</a>.</p>
@@ -187,10 +191,11 @@
     <h2>The questions you'd ask in the aisle.</h2>
   </div>
   <div class="faq">
-    <details open><summary>How is this better than a chocolate with a toy?</summary><p>The toy is the chocolate. Kids build first and eat after, so a treat turns into ten minutes of play, and nothing plastic ends up in a drawer or a landfill.</p></details>
+    <details open><summary>How is this better than a chocolate with a plastic toy?</summary><p>The chocolate is real single-origin chocolate with four ingredients. The toy is a cardboard animal kids actually build, and it connects to every other Vana animal, so it keeps getting played with instead of ending up in a drawer.</p></details>
     <details><summary>Is it sugar-free?</summary><p>No, and we won't pretend. Jaggery is sugar. We keep it low, size the pack for one sitting, and print the sugar grams on the front so you can decide in two seconds.</p></details>
     <details><summary>What about allergies?</summary><p>The kids' bricks contain milk. We are building them nut-free from day one so they can go into school tiffins and birthday bags.</p></details>
-    <details><summary>Will it melt in Indian summers?</summary><p>Chunky bricks hold their shape better than thin bars, and every pack travels in a foil inner. Like any real chocolate, it's happiest somewhere cool.</p></details>
+    <details><summary>Is the toy safe for small kids?</summary><p>The kit is sealed in its own sleeve, away from the chocolate. Pieces are large and made for ages three and up, and every kit is tested to India's toy safety standard before it goes on sale.</p></details>
+    <details><summary>Will it melt in Indian summers?</summary><p>Every bar travels in a foil inner, and in summer we ship in insulated cartons. Like any real chocolate, it's happiest somewhere cool.</p></details>
     <details><summary>Why "Vana"?</summary><p>Vana means forest. Every brick starts in one, and every pack is an animal that lives in one.</p></details>
   </div>
 </section>
@@ -212,7 +217,7 @@
 <!-- JOIN -->
 <section class="join" id="join">
   <div class="join__card">
-    <div class="join__art brickart brickart--mini" data-animal="hornbill" aria-hidden="true"></div>
+    <div class="join__art brickart brickart--mini brickart--kraft" data-animal="hornbill" aria-hidden="true"></div>
     <p class="kicker">The first batch</p>
     <h2>Get a pack before the shops do.</h2>
     <p>We're making a small first batch for families who want to try it and tell us what to fix. Leave your email and pick the next animal.</p>
@@ -240,6 +245,6 @@
   <p class="foot__small">A concept preview. Recipes and packs are in development; nothing here is for sale yet.</p>
 </footer>
 
-<script src="vana.js?v=1"></script>
+<script src="vana.js?v=2"></script>
 </body>
 </html>
