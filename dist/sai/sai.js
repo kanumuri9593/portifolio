@@ -73,16 +73,155 @@
     const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
     tl.from(chars.flat(), { yPercent: 105, duration: 1.4, stagger: 0.035 }, 0.1)
       .from(".hero__photo", { y: 120, opacity: 0, duration: 1.6 }, 0.35)
-      .from(".hero__meta > *, .nav > *", { y: 16, opacity: 0, duration: 1, stagger: 0.06 }, 0.9);
-    // scroll: name spreads apart, photo lifts and scales
+      .from(".hero__kick, .hero__lede > *, .nav > *", { y: 16, opacity: 0, duration: 1, stagger: 0.06 }, 0.8)
+      .from(".snap", { y: 40, opacity: 0, scale: 0.96, duration: 1.2, stagger: 0.09 }, 0.9);
+    // scroll: name drifts apart, snaps lift at different speeds, photo scales
     const st = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
     chars.forEach((cs) => cs.forEach((c, i) => {
       const mid = (cs.length - 1) / 2;
-      gsap.to(c, { x: () => (i - mid) * innerWidth * 0.018, ease: "none", scrollTrigger: st });
+      gsap.to(c, { x: () => (i - mid) * innerWidth * 0.008, ease: "none", scrollTrigger: st });
     }));
-    gsap.to(".hero__name", { yPercent: -30, opacity: 0.15, ease: "none", scrollTrigger: st });
-    gsap.to(".hero__photo", { scale: 1.08, yPercent: 6, ease: "none", scrollTrigger: st });
-    gsap.to(".hero__meta", { opacity: 0, y: -30, ease: "none", scrollTrigger: { ...st, end: "30% top" } });
+    gsap.to(".hero__name", { yPercent: -18, ease: "none", scrollTrigger: st });
+    gsap.matchMedia().add("(min-width: 900px)", () => { $$(".snap").forEach((el, i) => gsap.to(el, { y: -16 - i * 10, ease: "none", scrollTrigger: st })); });
+    gsap.to(".hero__photo", { scale: 1.06, yPercent: 4, ease: "none", scrollTrigger: st });
+  }
+
+  /* ===== v4 hero snaps (illustrative live demos) ===== */
+  // identity graph: a rotating sphere of identities, each human owns many machines and agents
+  function sphere() {
+    const cv = $("#sphere"); if (!cv) return;
+    const ctx = cv.getContext("2d"), N = 220, pts = [];
+    for (let i = 0; i < N; i++) {
+      const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.39996;
+      pts.push({ x: Math.cos(th) * r, y, z: Math.sin(th) * r, kind: i % 55 === 0 ? 0 : i % 5 === 0 ? 2 : 1 });
+    }
+    let W, H, vis = true;
+    const hum = pts.filter((p) => p.kind === 0), links = [];
+    pts.forEach((p, i) => { if (p.kind === 2 && i % 3 === 0) links.push([hum[i % hum.length], p]); });
+    function size() { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
+    function proj(p, a, b) {
+      const ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(b), sb = Math.sin(b);
+      const x = p.x * ca - p.z * sa, z1 = p.x * sa + p.z * ca, y = p.y * cb - z1 * sb, z = p.y * sb + z1 * cb;
+      const R = Math.min(W, H) * 0.36, cx = W * 0.5, cy = H * 0.52;
+      return [cx + x * R, cy + y * R, z];
+    }
+    function draw(t) {
+      if (!W) return;
+      ctx.clearRect(0, 0, W, H);
+      const a = t * 0.00025, b = 0.42 + Math.sin(t * 0.0002) * 0.12, pulse = (t * 0.0006) % 1;
+      links.forEach(([h, p], k) => {
+        const A = proj(h, a, b), B = proj(p, a, b), dep = (A[2] + B[2] + 2) / 4;
+        ctx.strokeStyle = `rgba(107,133,255,${0.08 + dep * 0.22})`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(B[0], B[1]); ctx.stroke();
+        const q = (pulse + k * 0.13) % 1;
+        ctx.fillStyle = `rgba(160,178,255,${dep})`;
+        ctx.beginPath(); ctx.arc(A[0] + (B[0] - A[0]) * q, A[1] + (B[1] - A[1]) * q, 1.4, 0, 6.283); ctx.fill();
+      });
+      pts.map((p) => [p, proj(p, a, b)]).sort((m, n) => m[1][2] - n[1][2]).forEach(([p, [x, y, z]]) => {
+        const d = (z + 1) / 2, r = p.kind === 0 ? 4.2 : p.kind === 2 ? 2.4 : 1.5;
+        ctx.fillStyle = p.kind === 0 ? `rgba(255,255,255,${0.35 + d * 0.65})` : p.kind === 2 ? `rgba(107,133,255,${0.3 + d * 0.7})` : `rgba(140,142,152,${0.15 + d * 0.5})`;
+        ctx.beginPath(); ctx.arc(x, y, r * (0.6 + d * 0.6), 0, 6.283); ctx.fill();
+        if (p.kind === 0 && d > 0.5) { ctx.strokeStyle = `rgba(255,255,255,${(d - 0.5) * 0.8})`; ctx.beginPath(); ctx.arc(x, y, r + 4 + Math.sin(t * 0.004) * 1.5, 0, 6.283); ctx.stroke(); }
+      });
+    }
+    size(); addEventListener("resize", () => { size(); draw(performance.now()); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => (vis = e.isIntersecting)).observe(cv);
+    if (!G) { draw(1200); return; }
+    (function loop(now) { requestAnimationFrame(loop); if (vis && !document.hidden) draw(now); })(performance.now());
+  }
+
+  // passkey: fingerprint traces, then verified
+  function passkey() {
+    const card = $(".snap--pass"); if (!card) return;
+    const st = $("#passSt"), sub = $("#passSub"), fill = $$(".fp__fill path", card);
+    const ok = () => { card.classList.add("is-ok"); st.textContent = "Verified"; sub.textContent = "Phishing-resistant, no password"; sub.className = "snap__sub ok"; };
+    if (!G) { fill.forEach((p) => (p.style.strokeDashoffset = 0)); ok(); return; }
+    gsap.timeline({ delay: 1.6, repeat: -1, repeatDelay: 2.4 })
+      .call(() => { card.classList.remove("is-ok"); st.textContent = "Passkey"; sub.textContent = "Waiting for Face ID"; sub.className = "snap__sub"; })
+      .set(fill, { strokeDashoffset: 60 })
+      .to(fill, { strokeDashoffset: 0, duration: 1.4, stagger: 0.12, ease: "power2.inOut" }, "+=0.5")
+      .call(() => { sub.textContent = "Checking device key"; }, null, "-=0.6")
+      .call(ok, null, "+=0.2")
+      .to(card, { scale: 1.03, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out" }, "<");
+  }
+
+  // agent token: a 15 minute credential counts down (sped up), expires, is revoked, then reissued
+  function tokenSnap() {
+    const card = $(".snap--tok"); if (!card) return;
+    const fill = $("#ttlFill"), t = $("#ttlT"), st = $("#tokSt");
+    const fmt = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+    if (!G) return;
+    const o = { s: 900 };
+    gsap.timeline({ delay: 2, repeat: -1, repeatDelay: 0.4 })
+      .call(() => { card.classList.remove("is-dead"); st.textContent = "Scoped to one task"; st.className = "snap__sub"; })
+      .set(o, { s: 900 }).set(fill, { scaleX: 1 })
+      .to(o, { s: 0, duration: 7, ease: "none", onUpdate: () => (t.textContent = fmt(o.s)) })
+      .to(fill, { scaleX: 0, duration: 7, ease: "none" }, "<")
+      .call(() => { card.classList.add("is-dead"); st.textContent = "Expired and revoked. No standing key"; st.className = "snap__sub bad"; })
+      .to({}, { duration: 2.2 })
+      .call(() => { st.textContent = "New token for the next task"; st.className = "snap__sub ok"; card.classList.remove("is-dead"); t.textContent = "15:00"; })
+      .to(fill, { scaleX: 1, duration: 0.6, ease: "expo.out" })
+      .to({}, { duration: 1.2 });
+  }
+
+  // policy decisions: a stream of allow / deny / hold / revoke calls
+  const DECISIONS = [
+    ["allow", "sai@corp → crm.read", "passkey"],
+    ["deny", "svc-backup → prod-db.drop", "out of scope"],
+    ["hold", "ap-agent → payee.change", "needs a person"],
+    ["allow", "research-agent → docs.read", "15 min token"],
+    ["revoke", "leaver@corp → vpn", "offboarded"],
+    ["deny", "new-country session → admin", "impossible travel"],
+    ["allow", "contractor → jira.write", "expires Friday"],
+    ["hold", "support-agent → refunds.issue", "over $500"],
+    ["deny", "ci-bot → secrets.read", "key not scoped"],
+  ];
+  function decisionLog() {
+    const ol = $("#dlog"); if (!ol) return;
+    const row = ([k, w, why]) => { const li = document.createElement("li"); li.className = k; li.innerHTML = `<b>${k.toUpperCase()}</b><span>${w}</span><em>${why}</em>`; return li; };
+    let i = 0;
+    for (; i < 4; i++) ol.appendChild(row(DECISIONS[i]));
+    if (!G) return;
+    setInterval(() => {
+      if (document.hidden) return;
+      const li = row(DECISIONS[i++ % DECISIONS.length]);
+      ol.appendChild(li);
+      gsap.from(li, { y: 16, opacity: 0, duration: 0.6, ease: "expo.out" });
+      while (ol.children.length > 5) ol.removeChild(ol.firstChild);
+    }, 1700);
+  }
+
+  /* expertise tabs: each discipline gets its own small live diagram */
+  const EXP = [
+    ["IGA · Governance", "Know who has access, and why.", "Bring identity lifecycles, access decisions and accountability together, so security teams move from scattered visibility to a program they can trust.",
+      () => { let h = `<circle class="s" cx="100" cy="100" r="78"/><circle class="w" cx="100" cy="100" r="10"/><g class="spin">`;
+        for (let i = 0; i < 8; i++) { const a = i * 0.785, x = 100 + Math.cos(a) * 78, y = 100 + Math.sin(a) * 78; h += `<line class="s flowd" x1="100" y1="100" x2="${x}" y2="${y}"/><circle class="${i % 3 ? "f" : "g"}" cx="${x}" cy="${y}" r="7"/>`; }
+        return h + `</g><circle class="b pulse" cx="100" cy="100" r="30"/>`; }],
+    ["PAM · Privileged access", "Protect the access that matters most.", "Cut exposure around powerful accounts and sensitive systems with the right mix of visibility, just-in-time access and accountability.",
+      () => `<circle class="s" cx="100" cy="100" r="80"/><g class="spinR"><circle class="b" cx="100" cy="100" r="62" stroke-dasharray="6 10"/></g><rect class="s" x="66" y="92" width="68" height="56" rx="10" style="stroke:#fff;stroke-width:2"/><path class="b" d="M78 92 V76 a22 22 0 0 1 44 0 V92"/><circle class="w" cx="100" cy="116" r="6"/><rect class="w" x="97" y="118" width="6" height="16" rx="3"/><circle class="b pulse" cx="100" cy="100" r="40"/>`],
+    ["CIAM · Customer identity", "Easy for people. Strong by design.", "Join authentication and user experience, so customers sign in quickly and safely on every app and device, with passkeys instead of passwords.",
+      () => { let h = `<circle class="s" cx="100" cy="100" r="40"/><circle class="s" cx="100" cy="100" r="62"/><circle class="s" cx="100" cy="100" r="84"/>`;
+        [[40, 6, "spin"], [62, 10, "spinR"], [84, 14, "spin"]].forEach(([r, n, c]) => { h += `<g class="${c}">`; for (let i = 0; i < n; i++) { const a = (i / n) * 6.283; h += `<circle class="${i % 4 ? "w" : "f"}" cx="${100 + Math.cos(a) * r}" cy="${100 + Math.sin(a) * r}" r="${r === 40 ? 4 : 3}" opacity="${r === 84 ? .5 : .9}"/>`; } h += `</g>`; });
+        return h + `<circle class="f" cx="100" cy="100" r="12"/>`; }],
+    ["NHI · Agent identity", "Extend trust beyond people.", "As software and AI agents act for us, make ownership, scoped permissions, short-lived credentials and human approval part of the identity program.",
+      () => `<path class="s" d="M100 30 L160 65 L160 135 L100 170 L40 135 L40 65 Z" style="stroke:#fff;stroke-width:1.6"/><path class="b" d="M100 58 L136 79 L136 121 L100 142 L64 121 L64 79 Z"/><g class="spin"><circle class="s" cx="100" cy="100" r="88" stroke-dasharray="2 6"/><circle class="g" cx="188" cy="100" r="6"/></g><g class="spinR"><circle class="r" cx="100" cy="12" r="5"/></g><circle class="w" cx="100" cy="100" r="9"/><circle class="b pulse" cx="100" cy="100" r="26"/>`],
+  ];
+  function expertise() {
+    const tabs = $$(".exp__tab"), art = $("#expArt"), copy = $(".exp__copy"); if (!art) return;
+    function pick(i) {
+      tabs.forEach((t, j) => t.setAttribute("aria-selected", j === i));
+      const [l, t, p, a] = EXP[i];
+      $("#expLabel").textContent = l; $("#expTitle").textContent = t; $("#expText").textContent = p; art.innerHTML = a();
+      copy.classList.remove("is-swap"); void copy.offsetWidth; copy.classList.add("is-swap");
+      if (G) gsap.fromTo(art, { scale: 0.85, opacity: 0, rotate: -20, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, rotate: 0, duration: 0.9, ease: "expo.out" });
+    }
+    tabs.forEach((t, i) => t.addEventListener("click", () => pick(i)));
+    pick(0);
+    if (G) {
+      gsap.from(".exp__tab", { x: -30, opacity: 0, duration: 1, stagger: 0.07, ease: "expo.out", scrollTrigger: { trigger: ".exp", start: "top 80%" } });
+      gsap.from(".cs", { y: 60, opacity: 0, duration: 1.2, stagger: 0.12, ease: "expo.out", scrollTrigger: { trigger: ".cases2", start: "top 85%" } });
+      gsap.from(".reads li", { y: 24, opacity: 0, duration: 1, stagger: 0.08, ease: "expo.out", scrollTrigger: { trigger: ".reads", start: "top 85%" } });
+    }
   }
 
   /* statement: words light up as you read */
@@ -529,6 +668,6 @@
     if (G) gsap.to(ps, { strokeDashoffset: 0, ease: "none", stagger: 0.004, scrollTrigger: { trigger: ".contact", start: "top 85%", end: "center 50%", scrub: 0.6 } });
   }
 
-  dots(); hero(); faceId(); statement(); split(); counters(); flowIcons(); flow(); cases(); playbook(); locks(); check(); reveals(); decrypt(); contactPrint();
+  dots(); hero(); sphere(); passkey(); tokenSnap(); decisionLog(); faceId(); expertise(); statement(); split(); counters(); flowIcons(); flow(); cases(); playbook(); locks(); check(); reveals(); decrypt(); contactPrint();
   addEventListener("load", () => G && ScrollTrigger.refresh());
 })();

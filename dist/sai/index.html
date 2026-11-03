@@ -26,6 +26,7 @@
     <a href="#shift">The shift</a>
     <a href="#scenarios">Scenarios</a>
     <a href="#playbook">Playbook</a>
+    <a href="#work">Work</a>
     <a href="#about">About</a>
   </nav>
   <a class="nav__cta" href="#contact">Let's talk</a>
@@ -36,10 +37,40 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero__grid" aria-hidden="true"><canvas id="dots"></canvas></div>
+  <span class="kicker hero__kick">Identity security · TechDemocracy</span>
   <h1 class="hero__name" aria-label="Sai Gangula">
     <span class="hero__line"><span class="hero__word" data-split>Sai</span></span>
     <span class="hero__line"><span class="hero__word" data-split>Gangula</span></span>
   </h1>
+  <div class="hero__lede">
+    <p>Helping enterprises make every identity, human, machine and AI agent, <b>known, scoped and accountable.</b></p>
+    <a class="pill" href="#check">Agent readiness check <span>→</span></a>
+  </div>
+
+  <!-- live IAM snaps (illustrative) -->
+  <article class="snap snap--sphere" aria-label="Identity graph: one person, many machine identities and AI agents">
+    <header class="snap__h"><i class="live"></i>Identity graph</header>
+    <canvas id="sphere" aria-hidden="true"></canvas>
+    <ul class="snap__legend"><li><i class="k-h"></i>Human</li><li><i class="k-m"></i>Machine</li><li><i class="k-a"></i>AI agent</li></ul>
+  </article>
+  <article class="snap snap--pass" aria-label="Passkey sign-in">
+    <header class="snap__h"><i class="live"></i>Sign-in</header>
+    <svg class="fp" viewBox="0 0 48 48" aria-hidden="true"><g class="fp__base"><path d="M14 30c0-7 4.5-12 10-12s10 5 10 12"/><path d="M18 33c0-6 2.5-10 6-10s6 4 6 10"/><path d="M24 28v8"/><path d="M10 24c1.5-8 7-13 14-13s12.5 5 14 13"/><path d="M22 38c-.5-3-.5-6 0-8"/><path d="M27 38c.8-2.5 1-5 .8-7.5"/></g><g class="fp__fill"><path d="M14 30c0-7 4.5-12 10-12s10 5 10 12"/><path d="M18 33c0-6 2.5-10 6-10s6 4 6 10"/><path d="M24 28v8"/><path d="M10 24c1.5-8 7-13 14-13s12.5 5 14 13"/><path d="M22 38c-.5-3-.5-6 0-8"/><path d="M27 38c.8-2.5 1-5 .8-7.5"/></g></svg>
+    <b class="snap__big" id="passSt">Passkey</b>
+    <span class="snap__sub" id="passSub">Waiting for Face ID</span>
+  </article>
+  <article class="snap snap--tok" aria-label="Short-lived token for an AI agent">
+    <header class="snap__h"><i class="live"></i>Agent token</header>
+    <b class="snap__big"><span class="mono">agent:</span>invoice-bot</b>
+    <span class="chips"><i>read:invoices</i><i class="no">pay:vendors</i></span>
+    <span class="ttl"><span class="ttl__bar"><i id="ttlFill"></i></span><span class="ttl__t" id="ttlT">15:00</span></span>
+    <span class="snap__sub" id="tokSt">Scoped to one task</span>
+  </article>
+  <article class="snap snap--log" aria-label="Access decisions, illustrative">
+    <header class="snap__h"><i class="live"></i>Policy decisions <span class="snap__tag">illustrative</span></header>
+    <ol class="dlog" id="dlog"></ol>
+  </article>
+
   <figure class="hero__photo">
     <img src="img/sai-call.webp" alt="Sai Gangula in a blue suit, on a phone call" width="820" height="1437" fetchpriority="high">
     <div class="faceid" id="faceid" aria-hidden="true">
@@ -49,14 +80,6 @@
     </div>
     <div class="faceid__tag" id="faceTag" aria-hidden="true"><span class="faceid__dot"></span><span id="faceText">Scanning</span></div>
   </figure>
-  <div class="hero__meta hero__meta--l">
-    <span class="kicker">Identity security · TechDemocracy</span>
-    <p>Helping enterprises make every identity, human, machine and AI agent, <b>known, scoped and accountable.</b></p>
-  </div>
-  <div class="hero__meta hero__meta--r">
-    <a class="pill" href="#check">Agent readiness check <span>→</span></a>
-    <span class="hero__scroll">Scroll</span>
-  </div>
 </section>
 
 <!-- STATEMENT -->
@@ -165,6 +188,64 @@
     <li><span class="n">05</span><h3>People approve high-impact actions</h3><p>Money, data exports and access changes pause for a human.</p></li>
     <li><span class="n">06</span><h3>Log it, review it, certify it</h3><p>Agents join the same access reviews as everyone else.</p></li>
   </ol>
+</section>
+
+<!-- WORK: expertise + published company case studies -->
+<section class="work" id="work">
+  <div class="work__head">
+    <p class="kicker">Expertise</p>
+    <h2>One conversation. Four kinds of identity.</h2>
+  </div>
+  <div class="exp">
+    <div class="exp__tabs" role="tablist" aria-label="Areas of expertise">
+      <button class="exp__tab" role="tab" aria-selected="true" data-i="0"><span>01</span>Identity governance<small>IGA</small></button>
+      <button class="exp__tab" role="tab" aria-selected="false" data-i="1"><span>02</span>Privileged access<small>PAM</small></button>
+      <button class="exp__tab" role="tab" aria-selected="false" data-i="2"><span>03</span>Customer identity<small>CIAM</small></button>
+      <button class="exp__tab" role="tab" aria-selected="false" data-i="3"><span>04</span>AI and machine identity<small>NHI</small></button>
+    </div>
+    <div class="exp__panel" role="tabpanel" aria-live="polite">
+      <svg class="exp__art" id="expArt" viewBox="0 0 200 200" aria-hidden="true"></svg>
+      <div class="exp__copy">
+        <p class="kicker" id="expLabel">IGA · Governance</p>
+        <h3 id="expTitle">Know who has access, and why.</h3>
+        <p id="expText">Bring identity lifecycles, access decisions and accountability together, so security teams move from scattered visibility to a program they can trust.</p>
+        <a class="link" href="https://www.techdemocracy.com/solutions/identity" target="_blank" rel="noopener">TechDemocracy identity solutions ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="work__head work__head--cases">
+    <p class="kicker">Selected work · published TechDemocracy case studies</p>
+    <h2>Identity in the real world.</h2>
+  </div>
+  <div class="cases2">
+    <a class="cs" href="https://www.techdemocracy.com/resources/ciam-implementation-for-healthcare-organization-10" target="_blank" rel="noopener">
+      <span class="cs__n"><b data-count="15">15</b>M</span>
+      <span class="cs__k">users migrated</span>
+      <span class="cs__tag">Healthcare · CIAM · Ping Identity</span>
+      <h3>Modern identity at healthcare scale.</h3>
+      <p>A move to one consumer identity platform, including a 15 million user repository migration and web and mobile sign-in.</p>
+      <span class="link">Read the case study ↗</span>
+    </a>
+    <a class="cs" href="https://www.techdemocracy.com/resources/legacy-identity-technology-to-modern-identity-governance-9" target="_blank" rel="noopener">
+      <span class="cs__n"><b data-count="40">40</b>+</span>
+      <span class="cs__k">applications moved</span>
+      <span class="cs__tag">Telecommunications · IGA · SailPoint</span>
+      <h3>From legacy sprawl to modern governance.</h3>
+      <p>A US telecommunications company moved 40+ applications to SailPoint IdentityIQ as part of a wider identity transformation.</p>
+      <span class="link">Read the case study ↗</span>
+    </a>
+  </div>
+  <p class="cite">These are TechDemocracy company case studies. Sai's individual role in them is not claimed here.</p>
+
+  <div class="reads">
+    <p class="kicker">Worth reading</p>
+    <ul>
+      <li><a href="https://www.nist.gov/blogs/cybersecurity-insights/design-tenets-agent-identity-management-systems" target="_blank" rel="noopener"><small>NIST</small>Design tenets for agent identity management<span>↗</span></a></li>
+      <li><a href="https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion" target="_blank" rel="noopener"><small>Google Cloud · Mandiant</small>When stolen credentials become the attack path<span>↗</span></a></li>
+      <li><a href="https://www.techdemocracy.com/resources/How-to-deploy-ai-agents-in-organizations-403" target="_blank" rel="noopener"><small>TechDemocracy</small>Bringing AI agents into identity governance<span>↗</span></a></li>
+    </ul>
+  </div>
 </section>
 
 <!-- ABOUT -->
