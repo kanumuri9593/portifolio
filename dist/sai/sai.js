@@ -57,7 +57,7 @@
       for (let y = gap / 2; y < H; y += gap) for (let x = gap / 2; x < W; x += gap) {
         const d = Math.hypot(x - m.x, y - m.y), k = Math.max(0, 1 - d / R);
         const r = 0.9 + k * 1.9;
-        ctx.fillStyle = k > 0.02 ? `rgba(30,63,224,${0.18 + k * 0.7})` : "rgba(15,16,19,.13)";
+        ctx.fillStyle = k > 0.02 ? `rgba(30,63,224,${0.18 + k * 0.7})` : "rgba(14,24,56,.13)";
         ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill();
       }
     }
@@ -560,15 +560,15 @@
         if (t <= 0) continue;
         const e = 1 - Math.pow(1 - t, 3);
         const x = ox + Math.cos(d.a) * RX * d.k * e, y = oy + Math.sin(d.a) * RY * d.k * e;
-        if (i % 3 === 0) { ctx.strokeStyle = d.agent ? "rgba(30,63,224,.16)" : "rgba(15,16,19,.07)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(x, y); ctx.stroke(); }
-        ctx.fillStyle = d.agent ? "rgba(30,63,224,.75)" : "rgba(15,16,19,.32)";
+        if (i % 3 === 0) { ctx.strokeStyle = d.agent ? "rgba(30,63,224,.16)" : "rgba(14,24,56,.07)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(x, y); ctx.stroke(); }
+        ctx.fillStyle = d.agent ? "rgba(30,63,224,.75)" : "rgba(14,24,56,.32)";
         if (d.agent) { ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 4, y); ctx.lineTo(x, y + 4); ctx.lineTo(x - 4, y); ctx.fill(); }
         else ctx.fillRect(x - 2, y - 2, 4, 4);
       }
       // the one human at the origin
       ctx.fillStyle = "#1e3fe0"; ctx.beginPath(); ctx.arc(ox, oy, 6 + 3 * (1 - Math.min(1, p * 3)), 0, 6.283); ctx.fill();
       ctx.strokeStyle = "rgba(30,63,224,.35)"; ctx.beginPath(); ctx.arc(ox, oy, 16, 0, 6.283); ctx.stroke();
-      ctx.font = "11px JetBrains Mono, monospace"; ctx.fillStyle = "rgba(15,16,19,.55)"; ctx.textAlign = "center";
+      ctx.font = "11px JetBrains Mono, monospace"; ctx.fillStyle = "rgba(14,24,56,.55)"; ctx.textAlign = "center";
       if (n > 0) ctx.fillText(`1 human  ·  ${n} machine identities`, ox, H - 28);
     }
     size(); addEventListener("resize", size);
@@ -670,4 +670,5 @@
 
   dots(); hero(); sphere(); passkey(); tokenSnap(); decisionLog(); faceId(); expertise(); statement(); split(); counters(); flowIcons(); flow(); cases(); playbook(); locks(); check(); reveals(); decrypt(); contactPrint();
   addEventListener("load", () => G && ScrollTrigger.refresh());
+  { const nav = document.getElementById("nav"), onS = () => nav.classList.toggle("is-scrolled", scrollY > 40); addEventListener("scroll", onS, { passive: true }); onS(); }
 })();
