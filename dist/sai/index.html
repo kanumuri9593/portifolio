@@ -6,215 +6,105 @@
 <title>Sai Gangula · Identity security for the agentic era</title>
 <meta name="description" content="Sai Gangula helps enterprises make every identity, human, machine and AI agent, known, scoped and accountable.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#070815">
+<meta name="theme-color" content="#f2f0eb">
 <meta property="og:title" content="Sai Gangula · Identity security for the agentic era">
 <meta property="og:description" content="Every identity, human, machine or AI agent, should be known, scoped and accountable.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070815'/%3E%3Cpath d='M16 6l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V9z' fill='none' stroke='%234fe3ff' stroke-width='2'/%3E%3Cpath d='M12.5 16l2.5 2.5 4.5-5' fill='none' stroke='%233dffa8' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%231e3fe0'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='white'%3ESG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="sai.css">
 </head>
-<body class="is-loading">
+<body>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- Loader: identity verification -->
-<div class="gate" id="gate" aria-hidden="true">
-  <svg class="gate__rose" viewBox="-200 -200 400 400" data-guilloche="gate"></svg>
-  <div class="gate__scan"></div>
-  <p class="gate__text"><span class="gate__dot"></span><span id="gateText">Verifying identity</span></p>
-</div>
-
-<header class="top" id="top">
-  <a class="brand" href="#hero" aria-label="Sai Gangula, back to top">
-    <span class="brand__seal">SG</span>
-    <span class="brand__name">Sai Gangula</span>
-  </a>
-  <nav class="top__nav" aria-label="Sections">
-    <a href="#ratio">The shift</a>
-    <a href="#story">Story</a>
-    <a href="#cases">Scenarios</a>
+<header class="nav" id="nav">
+  <a class="nav__name" href="#top">Sai Gangula</a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#shift">The shift</a>
+    <a href="#scenarios">Scenarios</a>
     <a href="#playbook">Playbook</a>
-    <a href="#check">Readiness</a>
+    <a href="#about">About</a>
   </nav>
-  <a class="top__cta" href="#contact">Talk identity</a>
-  <div class="top__trust" aria-hidden="true"><span id="trustBar"></span></div>
+  <a class="nav__cta" href="#contact">Let's talk</a>
 </header>
 
 <main id="main">
 
-<!-- 1. HERO -->
-<section class="hero" id="hero">
-  <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
-  <div class="hero__legend" aria-hidden="true">
-    <span><i class="dot dot--human"></i>People</span>
-    <span><i class="dot dot--machine"></i>Machines</span>
-    <span><i class="dot dot--agent"></i>AI agents</span>
-    <span class="hero__lenshint">Move to inspect</span>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__grid" aria-hidden="true"><canvas id="dots"></canvas></div>
+  <h1 class="hero__name" aria-label="Sai Gangula">
+    <span class="hero__line"><span class="hero__word" data-split>Sai</span></span>
+    <span class="hero__line"><span class="hero__word" data-split>Gangula</span></span>
+  </h1>
+  <figure class="hero__photo">
+    <img src="img/sai-call.webp" alt="Sai Gangula in a blue suit, on a phone call" width="820" height="1437" fetchpriority="high">
+  </figure>
+  <div class="hero__meta hero__meta--l">
+    <span class="kicker">Identity security · TechDemocracy</span>
+    <p>Helping enterprises make every identity, human, machine and AI agent, <b>known, scoped and accountable.</b></p>
   </div>
-
-  <div class="hero__inner">
-    <div class="hero__copy">
-      <p class="eyebrow"><span class="pulse"></span>Identity security · Growth · TechDemocracy</p>
-      <h1 class="hero__name" aria-label="Sai Gangula">
-        <span class="scramble" data-text="Sai">Sai</span>
-        <span class="scramble" data-text="Gangula">Gangula</span>
-      </h1>
-      <p class="hero__lede">Every identity, human, machine or AI agent, should be <em>known</em>, <em>scoped</em> and <em>accountable</em>. I help enterprises get there.</p>
-      <div class="hero__ctas">
-        <a class="btn btn--glow" href="#check">Run the agentic readiness check</a>
-        <a class="btn btn--ghost" href="https://www.linkedin.com/in/sai-gangula-7a2117120/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-      </div>
-    </div>
-
-    <div class="stage" id="stage">
-      <div class="figure" id="figure">
-        <div class="figure__halo" aria-hidden="true"></div>
-        <img class="figure__img" src="img/sai-call.webp" alt="Sai Gangula in a blue suit, on a phone call" width="820" height="1437" fetchpriority="high">
-        <div class="figure__scan" aria-hidden="true"><img src="img/sai-call.webp" alt=""></div>
-        <span class="figure__tag figure__tag--a" aria-hidden="true"><i class="dot dot--human"></i>human · verified</span>
-        <span class="figure__tag figure__tag--b" aria-hidden="true">mfa: passkey ✓</span>
-        <span class="figure__tag figure__tag--c" aria-hidden="true">risk: low</span>
-      </div>
-    <div class="card-wrap" id="cardWrap">
-      <article class="idcard" id="idcard" aria-label="Identity card for Sai Gangula">
-        <div class="idcard__foil"></div>
-        <svg class="idcard__guilloche" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" data-guilloche="card" aria-hidden="true"></svg>
-        <div class="idcard__head">
-          <span class="idcard__issuer">IDENTITY · VERIFIED HUMAN</span>
-          <span class="idcard__chip" aria-hidden="true"></span>
-        </div>
-        <div class="idcard__body">
-          <div class="idcard__photo">
-            <svg viewBox="-100 -100 200 200" data-guilloche="seal" aria-hidden="true"></svg>
-            <img src="img/sai-face.webp" alt="" width="320" height="400">
-          </div>
-          <dl class="idcard__fields">
-            <div><dt>Name</dt><dd>Sai Gangula</dd></div>
-            <div><dt>Role</dt><dd>Senior Advisor, Growth</dd></div>
-            <div><dt>Organisation</dt><dd>TechDemocracy</dd></div>
-            <div><dt>Domain</dt><dd>IAM · IGA · CIAM · PAM</dd></div>
-          </dl>
-        </div>
-        <div class="idcard__stamp" id="stamp">VERIFIED</div>
-        <pre class="idcard__mrz" id="mrz" aria-hidden="true"></pre>
-      </article>
-    </div>
-    </div>
-  </div>
-
-  <a class="hero__scroll" href="#ratio" aria-label="Scroll to the next section"><span></span></a>
-</section>
-
-<!-- 2. RATIO -->
-<section class="ratio" id="ratio">
-  <div class="ratio__pin">
-    <canvas class="ratio__canvas" id="ratioCanvas" aria-hidden="true"></canvas>
-    <div class="ratio__copy">
-      <p class="eyebrow eyebrow--cyan">The shift</p>
-      <div class="ratio__count"><span id="ratioHuman">1</span><b>:</b><span id="ratioMachine">1</span></div>
-      <div class="ratio__beats">
-        <p class="beat is-on" data-beat="0">For every person in the enterprise there are now <strong>109 machine identities</strong>. AI agents are the fastest growing kind.</p>
-        <p class="beat" data-beat="1"><strong>9 in 10</strong> organisations had a successful identity-related breach in the last twelve months.</p>
-        <p class="beat" data-beat="2"><strong>96%</strong> say people already hold far more access than their role needs. Now give that access to software that never sleeps.</p>
-      </div>
-      <p class="source">Source: <a href="https://www.paloaltonetworks.com/idira/identity-security-landscape-report" target="_blank" rel="noopener">Palo Alto Networks, 2026 Identity Security Landscape</a>, a survey of 2,930 security leaders.</p>
-    </div>
+  <div class="hero__meta hero__meta--r">
+    <a class="pill" href="#check">Agent readiness check <span>→</span></a>
+    <span class="hero__scroll">Scroll</span>
   </div>
 </section>
 
-<!-- 3. STORY: passport page -->
-<section class="story paper" id="story">
-  <svg class="paper__print" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" data-guilloche="paper" aria-hidden="true"></svg>
-  <div class="story__inner">
-    <header class="story__head">
-      <p class="eyebrow eyebrow--ink">Travel record</p>
-      <h2 class="serif">From building identity teams <em>to growing identity programs.</em></h2>
-      <p class="story__lede">Identity programs succeed or fail on people as much as platforms. Sai's path runs through both: first finding the engineers who run these programs, now helping enterprises decide what to build next.</p>
-    </header>
-    <ol class="stamps">
-      <li class="stamp stamp--round" style="--r:-8deg;--c:#1f4fd6">
-        <span class="stamp__top">Engineering</span>
-        <span class="stamp__big">Roots</span>
-        <span class="stamp__bot">Sri Vasavi Engineering College</span>
-      </li>
-      <li class="stamp stamp--rect" style="--r:5deg;--c:#b3261e">
-        <span class="stamp__top">Admitted · Talent</span>
-        <span class="stamp__big">Technical recruiting</span>
-        <span class="stamp__bot">IT &amp; security consultants</span>
-      </li>
-      <li class="stamp stamp--hex" style="--r:-4deg;--c:#0f7a55">
-        <span class="stamp__top">TechDemocracy</span>
-        <span class="stamp__big">Talent leadership</span>
-        <span class="stamp__bot">Building identity delivery teams</span>
-      </li>
-      <li class="stamp stamp--oval" style="--r:7deg;--c:#6b2fb3">
-        <span class="stamp__top">TechDemocracy · West Coast</span>
-        <span class="stamp__big">Growth</span>
-        <span class="stamp__bot">Senior Advisor</span>
-      </li>
-      <li class="stamp stamp--rect stamp--wide" style="--r:-3deg;--c:#c46a00">
-        <span class="stamp__top">Las Vegas · June 2025</span>
-        <span class="stamp__big">Identiverse</span>
-        <span class="stamp__bot">Platinum sponsor team · Booth 601</span>
-      </li>
-      <li class="stamp stamp--round stamp--next" style="--r:4deg;--c:#070815">
-        <span class="stamp__top">Next entry</span>
-        <span class="stamp__big">Agentic era</span>
-        <span class="stamp__bot">Governing AI identities</span>
-      </li>
-    </ol>
-  </div>
+<!-- STATEMENT -->
+<section class="statement" id="shift">
+  <p class="kicker kicker--center">The shift</p>
+  <p class="statement__text" data-words>For every person in your company there are now 109 machine identities. AI agents are the fastest growing kind, and most of them hold more access than anyone has reviewed.</p>
 </section>
 
-<!-- 4. FLOW: life of an access request -->
-<section class="flow" id="flow">
-  <div class="flow__pin">
-    <header class="flow__head">
-      <p class="eyebrow eyebrow--cyan">Life of an access request · 2026 edition</p>
-      <h2>An AI agent asks for access. <span class="dim">Here is everything that should happen next.</span></h2>
-    </header>
-    <div class="flow__stage">
-      <div class="token" id="token" aria-hidden="true">
-        <span class="token__icon"></span>
-        <span class="token__id">agent://invoice-assistant</span>
-        <span class="token__stamps" id="tokenStamps"></span>
-      </div>
-      <ol class="flow__track" id="flowTrack">
-        <li class="gate-step" data-k="Discovered"><span class="gate-step__n">01</span><h3>Discover</h3><p>The agent is in the inventory, with a named human owner and a purpose. No shadow agents.</p></li>
-        <li class="gate-step" data-k="Proven"><span class="gate-step__n">02</span><h3>Authenticate</h3><p>Workload identity and a short-lived token. No passwords, no API key pasted into a prompt.</p></li>
-        <li class="gate-step" data-k="Scoped"><span class="gate-step__n">03</span><h3>Authorize</h3><p>Least privilege, just in time. Read invoices, yes. Change bank details, no.</p></li>
-        <li class="gate-step" data-k="Approved"><span class="gate-step__n">04</span><h3>Approve</h3><p>High-impact actions pause for a human, with the agent's intent shown in plain words.</p></li>
-        <li class="gate-step" data-k="Recorded"><span class="gate-step__n">05</span><h3>Audit</h3><p>Every call is logged against the agent and its owner, reviewed and certified like any other access.</p></li>
-      </ol>
-    </div>
-  </div>
+<!-- NUMBERS -->
+<section class="numbers">
+  <ul class="numbers__row">
+    <li><b><span data-count="109">0</span><i>:1</i></b><span>machine identities for every human</span></li>
+    <li><b><span data-count="9">0</span><i> in 10</i></b><span>organisations breached through identity in the past year</span></li>
+    <li><b><span data-count="96">0</span><i>%</i></b><span>say people already hold more access than their role needs</span></li>
+  </ul>
+  <p class="cite">Palo Alto Networks, <a href="https://www.paloaltonetworks.com/idira/identity-security-landscape-report" target="_blank" rel="noopener">2026 Identity Security Landscape</a>, survey of 2,930 security leaders.</p>
 </section>
 
-<!-- 5. CASES -->
-<section class="cases" id="cases">
-  <header class="cases__head">
-    <p class="eyebrow eyebrow--violet">Field scenarios</p>
-    <h2>Identity in the agentic era, <span class="dim">played out.</span></h2>
-    <p class="cases__note"><span class="tag tag--warn">Illustrative scenarios</span> These are composite industry scenarios, not client stories. Press <b>Run</b>, then flip the controls on.</p>
-  </header>
+<!-- FLOW -->
+<section class="flow">
+  <div class="flow__head">
+    <p class="kicker">Life of an access request</p>
+    <h2>An AI agent asks for access.<br><span class="soft">Five things should happen next.</span></h2>
+  </div>
+  <ol class="flow__list">
+    <li><span class="n">01</span><h3>Discover</h3><p>It's in the inventory, with a named owner and a purpose. No shadow agents.</p></li>
+    <li><span class="n">02</span><h3>Authenticate</h3><p>Workload identity and a short-lived token. No API key pasted into a prompt.</p></li>
+    <li><span class="n">03</span><h3>Authorize</h3><p>Least privilege, just in time. Read invoices, yes. Change bank details, no.</p></li>
+    <li><span class="n">04</span><h3>Approve</h3><p>High-impact actions pause for a person, with the agent's intent in plain words.</p></li>
+    <li><span class="n">05</span><h3>Audit</h3><p>Every call is logged against the agent and its owner, and reviewed like any other access.</p></li>
+  </ol>
+  <div class="flow__bar" aria-hidden="true"><span id="flowBar"></span></div>
+</section>
 
-  <div class="cases__tabs" role="tablist" id="caseTabs"></div>
-
+<!-- SCENARIOS -->
+<section class="scenarios" id="scenarios">
+  <div class="scenarios__head">
+    <p class="kicker kicker--light">Scenarios</p>
+    <h2>Identity in the agentic era, played out.</h2>
+    <p class="scenarios__note">Illustrative composites, not client stories. Press <b>Run</b>, then switch the controls on.</p>
+  </div>
+  <div class="tabs" role="tablist" id="caseTabs"></div>
   <div class="case" id="case">
     <div class="case__sim">
-      <div class="case__simbar">
+      <div class="case__bar">
         <span class="case__sector" id="caseSector"></span>
-        <div class="switch" role="group" aria-label="Controls">
-          <button type="button" class="switch__opt is-on" data-mode="off" aria-pressed="true">Ungoverned</button>
-          <button type="button" class="switch__opt" data-mode="on" aria-pressed="false">Governed</button>
+        <div class="toggle" role="group" aria-label="Controls">
+          <button type="button" class="toggle__opt is-on" data-mode="off" aria-pressed="true">Ungoverned</button>
+          <button type="button" class="toggle__opt" data-mode="on" aria-pressed="false">Governed</button>
         </div>
       </div>
       <svg class="graph" id="graph" viewBox="0 0 640 380" role="img" aria-label="Attack path diagram"></svg>
       <div class="case__console">
-        <button type="button" class="btn btn--run" id="runBtn">▶ Run</button>
+        <button type="button" class="run" id="runBtn">Run</button>
         <ol class="log" id="log" aria-live="polite"></ol>
       </div>
     </div>
@@ -222,142 +112,130 @@
       <h3 id="caseTitle"></h3>
       <p class="case__story" id="caseStory"></p>
       <div class="case__cols">
-        <div><h4>The identity gap</h4><ul id="caseGap"></ul></div>
-        <div><h4>Controls that close it</h4><ul id="caseControls"></ul></div>
+        <div><h4>The gap</h4><ul id="caseGap"></ul></div>
+        <div><h4>What closes it</h4><ul id="caseControls"></ul></div>
       </div>
-      <p class="case__measure"><b>Measure it by</b> <span id="caseMeasure"></span></p>
+      <p class="case__measure"><span>Measure it by</span> <em id="caseMeasure"></em></p>
     </div>
   </div>
 
   <div class="incidents">
-    <h3 class="incidents__title"><span class="tag tag--real">Public record</span> The same lessons, from real incidents</h3>
-    <div class="incidents__grid">
+    <p class="kicker kicker--light">From the public record</p>
+    <div class="incidents__list">
       <a class="incident" href="https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion" target="_blank" rel="noopener">
-        <span class="incident__year">2024</span>
-        <h4>Snowflake customer data theft</h4>
-        <p>Attackers used credentials stolen by infostealer malware to sign in to customer accounts that had no MFA. Mandiant notified about 165 potentially exposed organisations.</p>
-        <span class="incident__lesson">Lesson: phishing-resistant MFA everywhere, and rotate what may have leaked.</span>
-        <span class="incident__src">Google Cloud · Mandiant ↗</span>
+        <span class="incident__y">2024</span>
+        <span class="incident__t">Snowflake customer data theft</span>
+        <span class="incident__d">Infostealer credentials used against customer accounts without MFA. Mandiant notified about 165 organisations.</span>
+        <span class="incident__a">↗</span>
       </a>
       <a class="incident" href="https://msrc.microsoft.com/blog/2024/01/microsoft-actions-following-attack-by-nation-state-actor-midnight-blizzard/" target="_blank" rel="noopener">
-        <span class="incident__year">2024</span>
-        <h4>Midnight Blizzard at Microsoft</h4>
-        <p>A password spray hit a legacy, non-production test account without MFA. From there the actor used a legacy OAuth application with elevated access.</p>
-        <span class="incident__lesson">Lesson: forgotten accounts and app identities are still identities. Inventory and retire them.</span>
-        <span class="incident__src">Microsoft Security Response Center ↗</span>
+        <span class="incident__y">2024</span>
+        <span class="incident__t">Midnight Blizzard at Microsoft</span>
+        <span class="incident__d">A password spray on a legacy test account without MFA, then a legacy OAuth app with elevated access.</span>
+        <span class="incident__a">↗</span>
       </a>
       <a class="incident" href="https://www.verizon.com/business/resources/reports/dbir/" target="_blank" rel="noopener">
-        <span class="incident__year">2025</span>
-        <h4>Verizon Data Breach Investigations Report</h4>
-        <p>Credential abuse remained a leading way in, and breaches involving a third party doubled to 30% in one year.</p>
-        <span class="incident__lesson">Lesson: every partner, integration and agent connection is part of your identity surface.</span>
-        <span class="incident__src">Verizon DBIR 2025 ↗</span>
+        <span class="incident__y">2025</span>
+        <span class="incident__t">Verizon DBIR</span>
+        <span class="incident__d">Credential abuse stayed a leading way in. Breaches involving a third party doubled to 30%.</span>
+        <span class="incident__a">↗</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- 6. PLAYBOOK: the lock -->
-<section class="playbook paper" id="playbook">
-  <svg class="paper__print" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" data-guilloche="paper2" aria-hidden="true"></svg>
-  <div class="playbook__pin">
-    <div class="dial-wrap">
-      <svg class="dial" id="dial" viewBox="-220 -220 440 440" aria-hidden="true"></svg>
-      <div class="dial__center"><span id="dialNum">0</span><small>/ 6 locked</small></div>
-    </div>
-    <div class="playbook__copy">
-      <p class="eyebrow eyebrow--ink">The playbook</p>
-      <h2 class="serif">Six controls for <em>agentic identity.</em></h2>
-      <ol class="rules" id="rules">
-        <li><b>Find every identity.</b> People, service accounts, API keys and agents, in one inventory.</li>
-        <li><b>Give every agent an owner.</b> A named human answers for what it can do.</li>
-        <li><b>Least privilege, just in time.</b> Access that is scoped, conditional and expires.</li>
-        <li><b>No standing secrets.</b> Short-lived tokens and vaulted, rotated keys.</li>
-        <li><b>Humans approve high-impact actions.</b> Money, data exports and access changes pause for a person.</li>
-        <li><b>Log it, review it, certify it.</b> Agents join the same access reviews as everyone else.</li>
-      </ol>
-    </div>
+<!-- PLAYBOOK -->
+<section class="playbook" id="playbook">
+  <div class="playbook__head">
+    <p class="kicker">The playbook</p>
+    <h2>Six controls for agentic identity.</h2>
+  </div>
+  <ol class="rules">
+    <li><span class="n">01</span><h3>Find every identity</h3><p>People, service accounts, API keys and agents, in one inventory.</p></li>
+    <li><span class="n">02</span><h3>Give every agent an owner</h3><p>A named person answers for what it can do.</p></li>
+    <li><span class="n">03</span><h3>Least privilege, just in time</h3><p>Access that is scoped, conditional and expires.</p></li>
+    <li><span class="n">04</span><h3>No standing secrets</h3><p>Short-lived tokens. Vaulted, rotated keys.</p></li>
+    <li><span class="n">05</span><h3>People approve high-impact actions</h3><p>Money, data exports and access changes pause for a human.</p></li>
+    <li><span class="n">06</span><h3>Log it, review it, certify it</h3><p>Agents join the same access reviews as everyone else.</p></li>
+  </ol>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <figure class="about__photo">
+    <img src="img/sai-stand.webp" alt="Sai Gangula standing in a blue suit" width="820" height="1648" loading="lazy">
+  </figure>
+  <div class="about__text">
+    <p class="kicker">About</p>
+    <h2>From building identity teams to growing identity programs.</h2>
+    <p class="about__lede">Identity programs succeed or fail on people as much as platforms. Sai spent years finding the engineers who run them. Today he helps enterprises decide what to build next, and who should build it.</p>
+    <ol class="timeline">
+      <li><span>Roots</span><p>Engineering, Sri Vasavi Engineering College</p></li>
+      <li><span>Talent</span><p>Technical recruiting for IT and security consultants</p></li>
+      <li><span>TechDemocracy</span><p>Talent leadership, building identity delivery teams</p></li>
+      <li><span>Growth</span><p>Senior Advisor, Growth (West Coast)</p></li>
+      <li><span>Identiverse 2025</span><p>Platinum sponsor team, Las Vegas</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- 7. READINESS CHECK -->
+<!-- CHECK -->
 <section class="check" id="check">
-  <div class="check__inner">
-    <header class="check__head">
-      <p class="eyebrow eyebrow--mint">60-second self check</p>
-      <h2>How ready is your identity program <span class="dim">for AI agents?</span></h2>
-      <p class="check__note">Six questions. Runs entirely in your browser, nothing is sent anywhere.</p>
-    </header>
-    <div class="check__body">
-      <div class="gauge">
-        <svg viewBox="0 0 200 200" aria-hidden="true">
-          <circle class="gauge__track" cx="100" cy="100" r="84"/>
-          <circle class="gauge__fill" id="gaugeFill" cx="100" cy="100" r="84"/>
-          <g id="gaugeTicks"></g>
-        </svg>
-        <div class="gauge__label"><span id="gaugeScore">0</span><small id="gaugeWord">Not started</small></div>
-      </div>
-      <form class="quiz" id="quiz"></form>
+  <div class="check__head">
+    <p class="kicker">Sixty-second check</p>
+    <h2>Is your identity program ready for AI agents?</h2>
+    <p class="soft">Six questions. It runs in your browser and nothing is sent.</p>
+  </div>
+  <div class="check__body">
+    <div class="meter">
+      <div class="meter__num"><span id="score">0</span><small>/100</small></div>
+      <div class="meter__bar"><span id="meterFill"></span></div>
+      <p class="meter__word" id="scoreWord">Not started</p>
     </div>
-    <div class="verdict" id="verdict" hidden>
-      <h3 id="verdictTitle"></h3>
-      <p id="verdictText"></p>
-      <a class="btn btn--glow" href="https://www.linkedin.com/in/sai-gangula-7a2117120/" target="_blank" rel="noopener">Talk it through with Sai</a>
-    </div>
+    <form class="quiz" id="quiz"></form>
+  </div>
+  <div class="verdict" id="verdict" hidden>
+    <h3 id="verdictTitle"></h3>
+    <p id="verdictText"></p>
+    <a class="pill pill--blue" href="https://www.linkedin.com/in/sai-gangula-7a2117120/" target="_blank" rel="noopener">Talk it through with Sai <span>↗</span></a>
   </div>
 </section>
 
-<!-- 8. COVERAGE -->
-<section class="cover" id="cover">
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__row">
-      <span>Identity Governance &amp; Administration</span><span>Customer IAM</span><span>Privileged Access</span><span>Access Management</span><span>AI Agent Governance</span><span>Passwordless</span><span>Managed SOC</span><span>Legacy IDM to IGA migration</span>
-      <span>Identity Governance &amp; Administration</span><span>Customer IAM</span><span>Privileged Access</span><span>Access Management</span><span>AI Agent Governance</span><span>Passwordless</span><span>Managed SOC</span><span>Legacy IDM to IGA migration</span>
-    </div>
-  </div>
-  <div class="cover__inner">
-    <div class="cover__lead">
-      <p class="eyebrow eyebrow--cyan">Who stands behind the conversation</p>
-      <h2>TechDemocracy, <span class="dim">an identity security partner.</span></h2>
-      <p>Advisory, implementation, 24/7 operations and managed services across workforce, customer and privileged identity, now including governance for AI agents. Headquartered in Piscataway, New Jersey, with delivery centres in Canada, India and the Philippines.</p>
+<!-- COVERAGE -->
+<section class="cover">
+  <div class="ticker" aria-hidden="true"><div class="ticker__row">
+    <span>Identity Governance</span><span>Customer IAM</span><span>Privileged Access</span><span>Access Management</span><span>AI Agent Governance</span><span>Passwordless</span><span>Managed SOC</span>
+    <span>Identity Governance</span><span>Customer IAM</span><span>Privileged Access</span><span>Access Management</span><span>AI Agent Governance</span><span>Passwordless</span><span>Managed SOC</span>
+  </div></div>
+  <div class="cover__grid">
+    <div>
+      <p class="kicker">Behind the conversation</p>
+      <h2>TechDemocracy, an identity security partner.</h2>
+      <p class="soft">Advisory, implementation, 24/7 operations and managed services across workforce, customer and privileged identity, now including governance for AI agents. Piscataway, New Jersey, with delivery centres in Canada, India and the Philippines.</p>
       <a class="link" href="https://www.techdemocracy.com" target="_blank" rel="noopener">techdemocracy.com ↗</a>
     </div>
     <ul class="facts">
-      <li><b data-count="24" data-suffix="+">0</b><span>years in identity</span></li>
-      <li><b data-count="15" data-suffix="M+">0</b><span>user identities managed</span></li>
-      <li><b data-count="20" data-suffix="+">0</b><span>delivery accelerators</span></li>
-      <li><b>ISO</b><span>IEC 27001 certified</span></li>
+      <li><b><span data-count="24">0</span>+</b><span>years in identity</span></li>
+      <li><b><span data-count="15">0</span>M+</b><span>identities managed</span></li>
+      <li><b><span data-count="20">0</span>+</b><span>delivery accelerators</span></li>
+      <li><b>27001</b><span>ISO/IEC certified</span></li>
     </ul>
-    <p class="source source--right">Figures as published by TechDemocracy on techdemocracy.com.</p>
   </div>
+  <p class="cite cite--r">Figures as published on techdemocracy.com.</p>
 </section>
 
-<!-- 9. CONTACT -->
-<section class="contact paper" id="contact">
-  <svg class="paper__print" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" data-guilloche="paper3" aria-hidden="true"></svg>
-  <div class="contact__inner">
-    <div class="contact__text">
-    <p class="eyebrow eyebrow--ink">Access request</p>
-    <h2 class="serif contact__title">Let's make every identity <em>accountable.</em></h2>
-    <p class="contact__lede">Planning an IGA rollout, a CIAM refresh, a PAM program, or your first AI agents in production? Start with a conversation.</p>
-    <div class="contact__ctas">
-      <a class="btn btn--ink" href="https://www.linkedin.com/in/sai-gangula-7a2117120/" target="_blank" rel="noopener">Message Sai on LinkedIn</a>
-      <a class="btn btn--line" href="https://www.techdemocracy.com" target="_blank" rel="noopener">Visit TechDemocracy</a>
-    </div>
-    <div class="approve" aria-hidden="true">
-      <span class="approve__row"><i>requester</i>you</span>
-      <span class="approve__row"><i>resource</i>a stronger identity program</span>
-      <span class="approve__row"><i>duration</i>as long as it takes</span>
-      <span class="approve__stamp" id="approveStamp">APPROVED</span>
-    </div>
-    </div>
-    <figure class="contact__fig">
-      <img src="img/sai-stand.webp" alt="Sai Gangula standing in a blue suit" width="820" height="1648" loading="lazy">
-    </figure>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="kicker kicker--light">Contact</p>
+  <h2 class="contact__big"><span data-split>Let's talk</span><br><span data-split>identity.</span></h2>
+  <p class="contact__lede">Planning an IGA rollout, a CIAM refresh, a PAM program, or your first AI agents in production? Start with a conversation.</p>
+  <div class="contact__ctas">
+    <a class="pill pill--white" href="https://www.linkedin.com/in/sai-gangula-7a2117120/" target="_blank" rel="noopener">Message on LinkedIn <span>↗</span></a>
+    <a class="pill pill--ghost" href="https://www.techdemocracy.com" target="_blank" rel="noopener">TechDemocracy <span>↗</span></a>
   </div>
   <footer class="foot">
-    <p>Scenarios on this page are illustrative composites, not client stories. Statistics and incidents link to their public sources. This is a personal page, not an official TechDemocracy page.</p>
-    <p>Crafted by <a href="https://studio.oneenergytogether.com" target="_blank" rel="noopener">One Energy Studio</a></p>
+    <p>Scenarios are illustrative composites, not client stories. Statistics and incidents link to their public sources. A personal page, not an official TechDemocracy page.</p>
+    <p>Made by <a href="https://studio.oneenergytogether.com" target="_blank" rel="noopener">One Energy Studio</a></p>
   </footer>
 </section>
 
