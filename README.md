@@ -57,3 +57,10 @@ Public source: https://github.com/kanumuri9593/portifolio
 - Personalise for a pitch with URL parameters: `?owner=Name` (host name) and `?for=Ana%20%26%20Sam` (couple).
 - Testimonials are illustrative. The page carries `noindex` until the owner approves the copy.
 
+
+## Sai Gangula (preview)
+
+`dist/sai/` (live at `/sai/`): an identity-security portfolio for Sai Gangula (TechDemocracy). Passport and hologram theme: verification loader, zero-trust lens over a field of human, machine and agent identities, a scan-verified hero photo with a tilting ID card, a 1 : 109 particle-avatar ratio scene, passport-stamp career page, a pinned "life of an access request", five playable agentic-era scenarios (Ungoverned vs Governed), a scroll-locked six-control dial and an in-browser readiness check. GSAP + ScrollTrigger and Lenis are vendored in `dist/sai/vendor`.
+
+- Scenarios are labelled illustrative composites. Statistics and incidents link to public sources; TechDemocracy figures are attributed to techdemocracy.com.
+- Photos supplied by Varma; backgrounds removed. The page carries `noindex` until Sai approves the copy.
