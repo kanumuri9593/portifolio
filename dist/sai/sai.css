@@ -416,7 +416,7 @@ p{margin:0}
   .snap__big{font-size:16px}
   .snap__big .mono{display:block;font-size:11px}
   .snap__sub{font-size:11.5px}
-  .hero__lede{margin:6px 0 4px;flex-direction:column;align-items:flex-start;gap:16px}
+  .hero__lede{margin:6px 0 18px;flex-direction:column;align-items:flex-start;gap:16px}
   .hero__lede p{font-size:16px}
   .snap--sphere{min-height:200px}
   .faceid__tag{left:6%;top:auto;bottom:24%;font-size:10px}
