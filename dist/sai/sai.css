@@ -268,7 +268,7 @@ p{margin:0}
 .faceid__mesh circle{fill:var(--blue)}
 .faceid__mesh line{stroke:rgba(30,63,224,.55);stroke-width:.35}
 .faceid.is-ok .faceid__c{border-color:var(--green)}
-.faceid__tag{position:absolute;left:55%;top:14%;display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:7px 12px 7px 10px;border-radius:999px;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px -10px rgba(14,24,56,.3);opacity:0;color:var(--ink)}
+.faceid__tag{position:absolute;left:50%;top:31%;display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:7px 12px 7px 10px;border-radius:999px;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px -10px rgba(14,24,56,.3);opacity:0;color:var(--ink)}
 .faceid__dot{width:8px;height:8px;border-radius:50%;background:var(--blue);animation:blink 1s infinite}
 .faceid__tag.is-ok .faceid__dot{background:var(--green);animation:none}
 @keyframes blink{50%{opacity:.25}}
@@ -491,3 +491,10 @@ p{margin:0}
   .reads a small{grid-column:1/-1}
 }
 .nav.is-scrolled{background:rgba(242,240,235,.9);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 var(--line);padding-top:12px;padding-bottom:12px}
+
+/* v4.1: stable snap heights while their text changes */
+.snap__sub{min-height:2.6em}
+.dlog{height:87px}
+.dlog li{height:18px;flex:none}
+@media (max-width:899px){.dlog{height:87px}.snap__sub{min-height:2.6em}.snap--pass,.snap--tok{min-height:0}}
+.hero__photo img{-webkit-mask-image:linear-gradient(#000 88%,transparent);mask-image:linear-gradient(#000 88%,transparent)}
