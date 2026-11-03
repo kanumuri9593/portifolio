@@ -75,15 +75,6 @@
       .from(".hero__photo", { y: 120, opacity: 0, duration: 1.6 }, 0.35)
       .from(".hero__kick, .hero__lede > *, .nav > *", { y: 16, opacity: 0, duration: 1, stagger: 0.06 }, 0.8)
       .from(".snap", { y: 40, opacity: 0, scale: 0.96, duration: 1.2, stagger: 0.09 }, 0.9);
-    // scroll: name drifts apart, snaps lift at different speeds, photo scales
-    const st = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
-    chars.forEach((cs) => cs.forEach((c, i) => {
-      const mid = (cs.length - 1) / 2;
-      gsap.to(c, { x: () => (i - mid) * innerWidth * 0.008, ease: "none", scrollTrigger: st });
-    }));
-    gsap.to(".hero__name", { yPercent: -18, ease: "none", scrollTrigger: st });
-    gsap.matchMedia().add("(min-width: 900px)", () => { $$(".snap").forEach((el, i) => gsap.to(el, { y: -16 - i * 10, ease: "none", scrollTrigger: st })); });
-    gsap.to(".hero__photo", { scale: 1.06, yPercent: 4, ease: "none", scrollTrigger: st });
   }
 
   /* ===== v4 hero snaps (illustrative live demos) ===== */
@@ -134,7 +125,7 @@
   function passkey() {
     const card = $(".snap--pass"); if (!card) return;
     const st = $("#passSt"), sub = $("#passSub"), fill = $$(".fp__fill path", card);
-    const ok = () => { card.classList.add("is-ok"); st.textContent = "Verified"; sub.textContent = "Phishing-resistant, no password"; sub.className = "snap__sub ok"; };
+    const ok = () => { card.classList.add("is-ok"); st.textContent = "Verified"; sub.textContent = "No password needed"; sub.className = "snap__sub ok"; };
     if (!G) { fill.forEach((p) => (p.style.strokeDashoffset = 0)); ok(); return; }
     gsap.timeline({ delay: 1.6, repeat: -1, repeatDelay: 2.4 })
       .call(() => { card.classList.remove("is-ok"); st.textContent = "Passkey"; sub.textContent = "Waiting for Face ID"; sub.className = "snap__sub"; })
@@ -157,9 +148,9 @@
       .set(o, { s: 900 }).set(fill, { scaleX: 1 })
       .to(o, { s: 0, duration: 7, ease: "none", onUpdate: () => (t.textContent = fmt(o.s)) })
       .to(fill, { scaleX: 0, duration: 7, ease: "none" }, "<")
-      .call(() => { card.classList.add("is-dead"); st.textContent = "Expired and revoked. No standing key"; st.className = "snap__sub bad"; })
+      .call(() => { card.classList.add("is-dead"); st.textContent = "Expired · revoked"; st.className = "snap__sub bad"; })
       .to({}, { duration: 2.2 })
-      .call(() => { st.textContent = "New token for the next task"; st.className = "snap__sub ok"; card.classList.remove("is-dead"); t.textContent = "15:00"; })
+      .call(() => { st.textContent = "New token issued"; st.className = "snap__sub ok"; card.classList.remove("is-dead"); t.textContent = "15:00"; })
       .to(fill, { scaleX: 1, duration: 0.6, ease: "expo.out" })
       .to({}, { duration: 1.2 });
   }
@@ -187,7 +178,7 @@
       const li = row(DECISIONS[i++ % DECISIONS.length]);
       ol.appendChild(li);
       gsap.from(li, { y: 16, opacity: 0, duration: 0.6, ease: "expo.out" });
-      while (ol.children.length > 5) ol.removeChild(ol.firstChild);
+      while (ol.children.length > 4) ol.removeChild(ol.firstChild);
     }, 1700);
   }
 
