@@ -42,6 +42,12 @@
   </h1>
   <figure class="hero__photo">
     <img src="img/sai-call.webp" alt="Sai Gangula in a blue suit, on a phone call" width="820" height="1437" fetchpriority="high">
+    <div class="faceid" id="faceid" aria-hidden="true">
+      <i class="faceid__c faceid__c--tl"></i><i class="faceid__c faceid__c--tr"></i><i class="faceid__c faceid__c--bl"></i><i class="faceid__c faceid__c--br"></i>
+      <span class="faceid__scan"></span>
+      <svg class="faceid__mesh" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+    </div>
+    <div class="faceid__tag" id="faceTag" aria-hidden="true"><span class="faceid__dot"></span><span id="faceText">Scanning</span></div>
   </figure>
   <div class="hero__meta hero__meta--l">
     <span class="kicker">Identity security · TechDemocracy</span>
@@ -55,6 +61,7 @@
 
 <!-- STATEMENT -->
 <section class="statement" id="shift">
+  <canvas class="statement__cv" id="split" aria-hidden="true"></canvas>
   <p class="kicker kicker--center">The shift</p>
   <p class="statement__text" data-words>For every person in your company there are now 109 machine identities. AI agents are the fastest growing kind, and most of them hold more access than anyone has reviewed.</p>
 </section>
@@ -75,6 +82,7 @@
     <p class="kicker">Life of an access request</p>
     <h2>An AI agent asks for access.<br><span class="soft">Five things should happen next.</span></h2>
   </div>
+  <div class="flow__bar" aria-hidden="true"><span id="flowBar"></span><b class="token" id="token"><i></i><span class="token__id">agent://invoice-assistant</span><span class="token__st" id="tokenSt">requesting</span></b></div>
   <ol class="flow__list">
     <li><span class="n">01</span><h3>Discover</h3><p>It's in the inventory, with a named owner and a purpose. No shadow agents.</p></li>
     <li><span class="n">02</span><h3>Authenticate</h3><p>Workload identity and a short-lived token. No API key pasted into a prompt.</p></li>
@@ -82,7 +90,6 @@
     <li><span class="n">04</span><h3>Approve</h3><p>High-impact actions pause for a person, with the agent's intent in plain words.</p></li>
     <li><span class="n">05</span><h3>Audit</h3><p>Every call is logged against the agent and its owner, and reviewed like any other access.</p></li>
   </ol>
-  <div class="flow__bar" aria-hidden="true"><span id="flowBar"></span></div>
 </section>
 
 <!-- SCENARIOS -->
@@ -226,6 +233,7 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
+  <svg class="contact__fp" id="contactFp" viewBox="-160 -200 320 400" aria-hidden="true"></svg>
   <p class="kicker kicker--light">Contact</p>
   <h2 class="contact__big"><span data-split>Let's talk</span><br><span data-split>identity.</span></h2>
   <p class="contact__lede">Planning an IGA rollout, a CIAM refresh, a PAM program, or your first AI agents in production? Start with a conversation.</p>

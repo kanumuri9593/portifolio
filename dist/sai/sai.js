@@ -111,7 +111,7 @@
       const dist = () => Math.max(0, list.scrollWidth - innerWidth + 60);
       const tw = gsap.to(list, { x: () => -dist(), ease: "none", scrollTrigger: {
         trigger: ".flow", pin: true, start: "top top", end: () => "+=" + (dist() + innerHeight * 0.4), scrub: 0.8, invalidateOnRefresh: true,
-        onUpdate: (s) => ($("#flowBar").style.width = s.progress * 100 + "%"),
+        onUpdate: (s) => flowProg(s.progress),
       } });
       return () => tw.scrollTrigger.kill();
     });
@@ -119,7 +119,7 @@
       const list = $(".flow__list");
       list.style.flexDirection = "column"; list.style.width = "auto";
       $$(".flow__list li").forEach((li) => { li.style.width = "auto"; gsap.from(li, { y: 50, opacity: 0, duration: 1, ease: "expo.out", scrollTrigger: { trigger: li, start: "top 90%" } }); });
-      ScrollTrigger.create({ trigger: list, start: "top 70%", end: "bottom 70%", onUpdate: (s) => ($("#flowBar").style.width = s.progress * 100 + "%") });
+      ScrollTrigger.create({ trigger: list, start: "top 70%", end: "bottom 70%", onUpdate: (s) => flowProg(s.progress) });
     });
   }
 
@@ -344,6 +344,191 @@
     up(".contact__lede, .contact__ctas", ".contact__lede");
   }
 
-  dots(); hero(); statement(); counters(); flow(); cases(); playbook(); check(); reveals();
+  /* ===================== IAM motion layer ===================== */
+  function rnd(seed) { let s = seed; return () => ((s = (s * 16807) % 2147483647) / 2147483647); }
+  // fingerprint ridges: concentric warped loops broken into segments
+  function fingerprint(cx, cy, n, step, seed = 7) {
+    const R = rnd(seed), out = [];
+    for (let i = 1; i <= n; i++) {
+      const rx = step * (i + 0.6), ry = rx * 1.32, pts = [];
+      const open = 0.35 + R() * 0.5; // gap at the bottom
+      for (let a = -Math.PI / 2 + open; a <= Math.PI * 1.5 - open; a += 0.06) {
+        const w = 1 + 0.05 * Math.sin(a * 3 + i * 0.7) + 0.03 * Math.sin(a * 7 - i);
+        pts.push([cx + Math.cos(a + Math.PI) * rx * w, cy - Math.sin(a + Math.PI) * ry * w * -1]);
+      }
+      // split into dashes with small breaks
+      let seg = [];
+      pts.forEach((p, k) => {
+        seg.push(p);
+        if ((R() < 0.035 && seg.length > 6) || k === pts.length - 1) {
+          out.push("M" + seg.map((q) => q[0].toFixed(1) + " " + q[1].toFixed(1)).join("L"));
+          seg = [];
+        }
+      });
+    }
+    return out;
+  }
+  const svgPaths = (list, cls) => list.map((d) => `<path class="${cls}" d="${d}"/>`).join("");
+  function drawOn(els, opts = {}) {
+    els.forEach((el) => { const L = el.getTotalLength ? el.getTotalLength() : 100; el.style.strokeDasharray = L; el.style.strokeDashoffset = G ? L : 0; });
+    if (G) return gsap.to(els, { strokeDashoffset: 0, duration: 1.6, stagger: 0.02, ease: "power2.inOut", ...opts });
+  }
+
+  /* 1. Face ID style verification on the hero photo */
+  function faceId() {
+    const box = $("#faceid"), tag = $("#faceTag"), txt = $("#faceText"), mesh = $(".faceid__mesh", box);
+    const R = rnd(11), pts = [];
+    for (let i = 0; i < 18; i++) { const a = R() * 6.283, r = Math.sqrt(R()) * 46; pts.push([50 + Math.cos(a) * r * 0.85, 50 + Math.sin(a) * r]); }
+    let h = "";
+    pts.forEach((p, i) => pts.forEach((q, j) => { if (j > i && Math.hypot(p[0] - q[0], p[1] - q[1]) < 26) h += `<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`; }));
+    pts.forEach((p) => (h += `<circle cx="${p[0]}" cy="${p[1]}" r=".9"/>`));
+    mesh.innerHTML = h;
+    if (!G) { box.style.opacity = 1; box.classList.add("is-ok"); tag.classList.add("is-ok"); tag.style.opacity = 1; txt.textContent = "Verified · human · passkey"; return; }
+    const cs = $$(".faceid__c", box), scan = $(".faceid__scan", box);
+    const off = [[-1, -1], [1, -1], [-1, 1], [1, 1]];
+    const tl = gsap.timeline({ delay: 1.9, repeat: -1, repeatDelay: 6 });
+    tl.call(() => { box.classList.remove("is-ok"); tag.classList.remove("is-ok"); txt.textContent = "Scanning face"; })
+      .set(box, { opacity: 1 })
+      .fromTo(cs, { x: (i) => off[i][0] * 26, y: (i) => off[i][1] * 26, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.8, ease: "expo.out", stagger: 0.04 })
+      .fromTo(tag, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 }, "<")
+      .fromTo(scan, { top: "0%", opacity: 1 }, { top: "100%", duration: 0.9, ease: "power1.inOut", yoyo: true, repeat: 1 })
+      .fromTo($$("line, circle", mesh), { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.008 }, "<0.2")
+      .set(scan, { opacity: 0 })
+      .call(() => { txt.textContent = "Checking passkey"; })
+      .to({}, { duration: 0.6 })
+      .call(() => { box.classList.add("is-ok"); tag.classList.add("is-ok"); txt.textContent = "Verified · human · passkey"; })
+      .fromTo(cs, { scale: 1 }, { scale: 1.12, duration: 0.18, yoyo: true, repeat: 1 })
+      .to($$("line, circle", mesh), { opacity: 0, duration: 0.6 }, "+=0.6")
+      .to(box, { opacity: 0, duration: 0.8 }, "+=1.6")
+      .to(tag, { opacity: 0, duration: 0.6 }, "<");
+  }
+
+  /* 2. One identity splits into 109 behind the statement */
+  function split() {
+    const cv = $("#split"), ctx = cv.getContext("2d"), sec = $(".statement");
+    let W, H, p = 0;
+    const R = rnd(5), dots = [];
+    for (let i = 0; i < 109; i++) dots.push({ a: i * 2.39996, k: Math.sqrt((i + 0.5) / 109), agent: i % 4 === 0, d: R() * 0.25 });
+    function size() { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); draw(); }
+    function draw() {
+      if (!W) return;
+      ctx.clearRect(0, 0, W, H);
+      const ox = W / 2, oy = H * 0.5, RX = W * 0.47, RY = H * 0.44;
+      const n = Math.round(Math.min(1, p / 0.6) * 109);
+      for (let i = 0; i < 109; i++) {
+        const d = dots[i];
+        const t = Math.max(0, Math.min(1, (p * 1.5 - d.d - i / 109 * 0.6) / 0.5));
+        if (t <= 0) continue;
+        const e = 1 - Math.pow(1 - t, 3);
+        const x = ox + Math.cos(d.a) * RX * d.k * e, y = oy + Math.sin(d.a) * RY * d.k * e;
+        if (i % 3 === 0) { ctx.strokeStyle = d.agent ? "rgba(30,63,224,.16)" : "rgba(15,16,19,.07)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(x, y); ctx.stroke(); }
+        ctx.fillStyle = d.agent ? "rgba(30,63,224,.75)" : "rgba(15,16,19,.32)";
+        if (d.agent) { ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 4, y); ctx.lineTo(x, y + 4); ctx.lineTo(x - 4, y); ctx.fill(); }
+        else ctx.fillRect(x - 2, y - 2, 4, 4);
+      }
+      // the one human at the origin
+      ctx.fillStyle = "#1e3fe0"; ctx.beginPath(); ctx.arc(ox, oy, 6 + 3 * (1 - Math.min(1, p * 3)), 0, 6.283); ctx.fill();
+      ctx.strokeStyle = "rgba(30,63,224,.35)"; ctx.beginPath(); ctx.arc(ox, oy, 16, 0, 6.283); ctx.stroke();
+      ctx.font = "11px JetBrains Mono, monospace"; ctx.fillStyle = "rgba(15,16,19,.55)"; ctx.textAlign = "center";
+      if (n > 0) ctx.fillText(`1 human  ·  ${n} machine identities`, ox, H - 28);
+    }
+    size(); addEventListener("resize", size);
+    if (G) ScrollTrigger.create({ trigger: sec, start: "top 85%", end: "bottom 40%", onUpdate: (s) => { p = s.progress; draw(); } });
+    else { p = 1; draw(); }
+  }
+
+  /* 3. Animated icons on the access-request cards + travelling token */
+  const ICONS = [
+    // Discover: radar
+    `<circle class="s" cx="40" cy="40" r="34"/><circle class="s" cx="40" cy="40" r="22"/><circle class="s" cx="40" cy="40" r="10"/>
+     <g class="sweep"><path d="M40 40 L74 40 A34 34 0 0 0 64 16 Z" fill="rgba(30,63,224,.16)"/><line class="b" x1="40" y1="40" x2="74" y2="40"/></g>
+     <circle class="f blip" cx="58" cy="26" r="3"/><circle class="f blip" cx="24" cy="54" r="3"/><circle class="f blip" cx="61" cy="56" r="3"/>
+     <path class="s" d="M88 30h24M88 40h18M88 50h22"/>`,
+    // Authenticate: fingerprint + scan
+    () => `<g>${svgPaths(fingerprint(40, 40, 7, 4.2, 3), "s")}</g><line class="b fpscan" x1="12" y1="8" x2="68" y2="8"/>
+     <rect class="s" x="86" y="22" width="26" height="36" rx="6"/><path class="b" d="M93 40l4 4 8-9"/>`,
+    // Authorize: key + scope brackets
+    `<circle class="s" cx="20" cy="40" r="11"/><circle class="f" cx="20" cy="40" r="3"/><path class="s" d="M31 40H70M58 40v8M66 40v6"/>
+     <g class="br-l"><path class="b" d="M88 20h-6v40h6"/></g><g class="br-r"><path class="b" d="M106 20h6v40h-6"/></g>
+     <path class="s" d="M92 32h10M92 40h10M92 48h10"/><path class="b" d="M92 40h10"/>`,
+    // Approve: agent -> pause -> person
+    `<rect class="s" x="4" y="28" width="26" height="24" rx="6"/><circle class="f" cx="17" cy="40" r="3"/>
+     <path class="s" d="M32 40h56" stroke-dasharray="3 4"/>
+     <g class="pause"><path class="b" d="M55 33v14M65 33v14"/></g><g class="ok"><circle cx="60" cy="40" r="10" fill="#1f9d55"/><path d="M55 40l3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></g>
+     <circle class="s" cx="104" cy="31" r="7"/><path class="s" d="M91 56c2-9 7-13 13-13s11 4 13 13"/>`,
+    // Audit: scrolling log lines
+    `<defs><clipPath id="logclip"><rect x="0" y="6" width="120" height="68" rx="8"/></clipPath></defs>
+     <rect class="s" x="0" y="6" width="120" height="68" rx="8"/>
+     <g clip-path="url(#logclip)"><g class="logs">${[0,1,2,3,4,5,6,7].map((i) => `<path class="${i % 3 === 1 ? "b" : "s"}" d="M12 ${18 + i * 12}h${[70, 52, 84, 40, 64, 76, 48, 58][i]}"/><circle class="f" cx="104" cy="${18 + i * 12}" r="2"/>`).join("")}</g></g>`,
+  ];
+  const TOKEN = ["requesting access", "discovered · owner: finance", "authenticated · 15 min token", "scoped · read invoices only", "approved by controller", "logged · reviewed ✓"];
+  let flowItems = [];
+  function flowIcons() {
+    flowItems = $$(".flow__list li");
+    flowItems.forEach((li, i) => {
+      const s = document.createElementNS(NS, "svg");
+      s.setAttribute("class", "ico"); s.setAttribute("viewBox", "0 0 120 80"); s.setAttribute("aria-hidden", "true");
+      s.innerHTML = typeof ICONS[i] === "function" ? ICONS[i]() : ICONS[i];
+      li.insertBefore(s, $("h3", li));
+    });
+    if (G) {
+      gsap.to(".br-l", { x: 6, duration: 1.4, yoyo: true, repeat: -1, ease: "power2.inOut" });
+      gsap.to(".br-r", { x: -6, duration: 1.4, yoyo: true, repeat: -1, ease: "power2.inOut" });
+      const strokes = $$(".flow .ico .s, .flow .ico .b").filter((e) => !e.classList.contains("fpscan") && !e.getAttribute("stroke-dasharray"));
+      strokes.forEach((el) => { const L = el.getTotalLength(); el.style.strokeDasharray = L; el.style.strokeDashoffset = L; });
+      ScrollTrigger.create({ trigger: ".flow", start: "top 70%", once: true, onEnter: () => gsap.to(strokes, { strokeDashoffset: 0, duration: 1.8, stagger: 0.01, ease: "power2.inOut" }) });
+    }
+  }
+  function flowProg(p) {
+    $("#flowBar").style.width = p * 100 + "%";
+    const tok = $("#token"), bar = tok.parentElement;
+    tok.style.left = Math.max(0, p * (bar.clientWidth - tok.offsetWidth)) + "px";
+    const stage = p < 0.04 ? 0 : Math.min(5, 1 + Math.floor((p - 0.04) / 0.96 * 5));
+    $("#tokenSt").textContent = TOKEN[stage];
+    tok.classList.toggle("is-done", stage === 5);
+    flowItems.forEach((li, i) => li.classList.toggle("is-pass", i < stage));
+  }
+
+  /* 4. Padlocks that close as each control locks in */
+  function locks() {
+    $$(".rules li").forEach((li) => {
+      const s = document.createElementNS(NS, "svg");
+      s.setAttribute("class", "lock"); s.setAttribute("viewBox", "0 0 30 36"); s.setAttribute("aria-hidden", "true");
+      s.innerHTML = `<path class="sh" d="M8 17V11a7 7 0 0 1 14 0v6"/><rect class="body" x="3" y="16" width="24" height="18" rx="5"/><circle class="kh" cx="15" cy="25" r="2.2"/>`;
+      li.insertBefore(s, $("h3", li));
+      if (G) ScrollTrigger.create({ trigger: li, start: "top 85%", end: "top 45%", onUpdate: (st) => li.classList.toggle("is-locked", st.progress > 0.97), onLeave: () => li.classList.add("is-locked"), onEnterBack: () => {} });
+      else li.classList.add("is-locked");
+    });
+  }
+
+  /* 5. Kickers decrypt as they enter */
+  function decrypt() {
+    if (!G) return;
+    const GL = "0123456789ABCDEF#$%&*/<>";
+    $$(".kicker").forEach((k) => {
+      if (k.closest(".hero")) return;
+      const text = k.textContent;
+      ScrollTrigger.create({ trigger: k, start: "top 90%", once: true, onEnter: () => {
+        let f = 0;
+        (function tick() {
+          let h = "";
+          for (let i = 0; i < text.length; i++) h += f > i * 1.2 + 4 || text[i] === " " ? text[i] : `<span class="g">${GL[(Math.random() * GL.length) | 0]}</span>`;
+          k.innerHTML = h;
+          if (f++ < text.length * 1.2 + 6) requestAnimationFrame(tick); else k.textContent = text;
+        })();
+      } });
+    });
+  }
+
+  /* 6. Fingerprint drawing behind the contact headline */
+  function contactPrint() {
+    const svg = $("#contactFp");
+    svg.innerHTML = svgPaths(fingerprint(0, 0, 18, 8.4, 21), "");
+    const ps = $$("path", svg);
+    ps.forEach((el) => { const L = el.getTotalLength(); el.style.strokeDasharray = L; el.style.strokeDashoffset = G ? L : 0; });
+    if (G) gsap.to(ps, { strokeDashoffset: 0, ease: "none", stagger: 0.004, scrollTrigger: { trigger: ".contact", start: "top 85%", end: "center 50%", scrub: 0.6 } });
+  }
+
+  dots(); hero(); faceId(); statement(); split(); counters(); flowIcons(); flow(); cases(); playbook(); locks(); check(); reveals(); decrypt(); contactPrint();
   addEventListener("load", () => G && ScrollTrigger.refresh());
 })();
