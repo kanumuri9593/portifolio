@@ -60,7 +60,7 @@ Public source: https://github.com/kanumuri9593/portifolio
 
 ## Sai Gangula (preview)
 
-`dist/sai/` (live at `/sai/`): an identity-security portfolio for Sai Gangula (TechDemocracy). Modern editorial design in stone and cobalt (taken from his suit): a giant condensed name behind his cutout photo over a cursor-lit dot grid, a word-by-word statement, big-number stats, a pinned horizontal "life of an access request", five playable agentic-era scenarios (Ungoverned vs Governed), a six-control playbook, an about timeline, an in-browser readiness check and a cobalt contact section. GSAP + ScrollTrigger and Lenis are vendored in `dist/sai/vendor`.
+`dist/sai/` (live at https://saigangula.com via `functions/_middleware.js`; old `/sai/` and sai.oneenergytogether.com links redirect there): an identity-security portfolio for Sai Gangula (TechDemocracy). Modern editorial design in stone and cobalt (taken from his suit): a giant condensed name behind his cutout photo over a cursor-lit dot grid, a word-by-word statement, big-number stats, a pinned horizontal "life of an access request", five playable agentic-era scenarios (Ungoverned vs Governed), a six-control playbook, an about timeline, an in-browser readiness check and a cobalt contact section. GSAP + ScrollTrigger and Lenis are vendored in `dist/sai/vendor`.
 
 - Scenarios are labelled illustrative composites. Statistics and incidents link to public sources; TechDemocracy figures are attributed to techdemocracy.com.
 - Photos supplied by Varma; backgrounds removed. The page carries `noindex` until Sai approves the copy.
