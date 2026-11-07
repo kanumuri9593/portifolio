@@ -259,7 +259,8 @@ section{position:relative}
 .pc-copy p{margin:0;font-size:clamp(15px,1.3vw,18px);max-width:34ch;opacity:.86}
 .pc-tags{display:flex;gap:8px;flex-wrap:wrap}
 .pc-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid currentColor;opacity:.75}
-.pc-tags span.live{background:var(--card-ink,var(--ivory));color:var(--card,#16181b);opacity:1;border-color:transparent}
+.pc-tags a.live{text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+.pc-tags span.live,.pc-tags a.live{background:var(--card-ink,var(--ivory));color:var(--card,#16181b);opacity:1;border-color:transparent}
 .pc-art{position:relative;overflow:hidden;min-height:260px}
 .phone{position:absolute;left:50%;top:9%;width:min(62%,280px);aspect-ratio:9/19;transform:translateX(-50%) rotate(-4deg);border-radius:34px;border:8px solid #0b0c0e;background:#0b0c0e;overflow:hidden;box-shadow:0 40px 60px -20px rgba(0,0,0,.6)}
 .phone img{width:100%;height:100%;object-fit:cover;object-position:top}
@@ -619,7 +620,7 @@ section{position:relative}
       <div class="pc-art"><div class="phone"><img src="img/corerun.webp" alt="CoreRun app screen" loading="lazy"></div></div>
     </article>
     <article class="pcard" style="--i:1;--card:#f3f0e7;--card-ink:#0b0c0e">
-      <div class="pc-copy"><span class="n">02 / Everyday utility</span><div><h3>TagVault</h3><p>Tag it. Store it. Find it. Containers, documents, QR codes and NFC tags for the things you keep.</p></div><div class="pc-tags"><span>Prototype</span><span>QR</span><span>NFC</span></div></div>
+      <div class="pc-copy"><span class="n">02 / Everyday utility</span><div><h3>TagVault</h3><p>Snap it. Tag it. Find it. Remember where everything in your home is, with on-device AI, NFC and QR tags, and family sharing. Free, with no account.</p></div><div class="pc-tags"><a class="live" href="/tagvault/?src=portfolio_card" aria-label="Get TagVault on the App Store">On the App Store</a><span>iPhone + iPad</span><span>NFC + QR</span></div></div>
       <div class="pc-art"><div class="phone"><img src="img/tagvault.webp" alt="TagVault app screen" loading="lazy"></div></div>
     </article>
     <article class="pcard" style="--i:2;--card:#1d2a24;--card-ink:#f3f0e7">
