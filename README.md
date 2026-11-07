@@ -37,7 +37,7 @@ Activity buttons and scrolling change the scene and navigation. The shared pause
 
 The portrait uses an AI-assisted extraction from the supplied founders photograph. Its background and second person were removed; obscured clothing was reconstructed. Illustrative character loops use the supplied portrait as reference. Snowboarding is an adventure scene, not a claimed competition result. NYC and upstate scenery is original illustration, not surveyed geography.
 
-Instagram embeds load only when a film is selected. Google Fonts have local system fallbacks. Download buttons link to verified store listings: Core Run on Apple's App Store, and the existing Mista Eats client apps on Apple and Google stores. TagVault retains a project link because no attributable released store listing was verified.
+Instagram embeds load only when a film is selected. Google Fonts have local system fallbacks. Download buttons link to verified store listings: Core Run and TagVault on Apple's App Store (through `/corerun/` and `/tagvault/`, which count the visit and pass `?src=` on as the App Store campaign `ct`), and the existing Mista Eats client apps on Apple and Google stores.
 
 ## Content and attribution
 
